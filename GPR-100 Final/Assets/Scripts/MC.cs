@@ -2,15 +2,7 @@ using UnityEngine;
 
 public class MC : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private const int MAX_MC_HEALTH = 20;
+    public int fighterHealth = MAX_MC_HEALTH;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

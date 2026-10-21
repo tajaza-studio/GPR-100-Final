@@ -2,15 +2,7 @@ using UnityEngine;
 
 public class Priest : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private const int MAX_PRIEST_HEALTH = 20;
+    public int fighterHealth = MAX_PRIEST_HEALTH;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
