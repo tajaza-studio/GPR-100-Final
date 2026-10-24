@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    /*[SerializeField] MCScript MC;
-    [SerializeField] PriestScript Priest;
-    [SerializeField] FighterScript Fighter;*/
+    [SerializeField] GameObject MC;
+    [SerializeField] GameObject Priest;
+    [SerializeField] GameObject Fighter;
 
-    /*MCScript mcScript;
-    PriestScript priestScript;
-    FighterScript fighterScript;*/
+    Character mcScript;
+    Character priestScript;
+    Character fighterScript;
 
     public int damage;
     public bool aoe;
@@ -19,7 +19,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        
+        mcScript = MC.GetComponent<Character>();
+        priestScript = Priest.GetComponent<Character>();
+        fighterScript = Fighter.GetComponent<Character>();
     }
 
     int getRandomCharacter()
@@ -30,42 +32,58 @@ public class Enemy : MonoBehaviour
     void attack(int damage, bool aoe)
     {
         int attackRandom = getRandomCharacter();
-
-       /* if (aoe) 
+        bool attacking = true;
+        if (aoe) 
         {
-            if (MC.isAlive)
+            if (mcScript.isAlive)
             {
-                MC.takeDamage(damage);
+                mcScript.takeDamage(damage);
             }
 
-            if(Priest.isAlive)
+            if(priestScript.isAlive)
             {
-                Priest.takeDamage(damage);
+                priestScript.takeDamage(damage);
             }
-            Priest.takeDamage(damage);
 
-            if (Fighter.isAlive)
+            if (fighterScript.isAlive)
             {
-                Fighter.takeDamage(damage);
+                fighterScript.takeDamage(damage);
             }
             return;
         }
-        
-        if (attackRandom == 0)
+        while (attacking)
         {
-            Priest.takeDamage(damage);
+
+
+            switch (attackRandom % 3)
+            {
+                case (0):
+                    if (priestScript.isAlive)
+                    {
+                        priestScript.takeDamage(damage);
+                        attacking = false;
+                    }
+                    break;
+                case (1):
+                    if (mcScript.isAlive)
+                    { 
+                        mcScript.takeDamage(damage);
+                        attacking = false;
+                    }
+                    break;
+                case (2):
+                    if (fighterScript.isAlive)
+                    {
+                        fighterScript.takeDamage(damage);
+                        attacking = false;
+                    }
+                    break;
+
+            }
+            attackRandom++;
+
+         
         }
-
-        if (attackRandom == 1)
-        {
-            MC.takeDamage(damage);
-        }
-
-        if (attackRandom == 2)
-        {
-            Fighter.takeDamage(damage);
-        }*/
-
     }
 
 

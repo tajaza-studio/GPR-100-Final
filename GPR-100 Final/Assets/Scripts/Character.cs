@@ -18,36 +18,53 @@ public class Character : MonoBehaviour
         }
     }
 
+   //Priest Skills
+    /*void priestHeal()
+    {
 
+    }
 
+    void priestBlessing()
+    {
 
+    }
 
-
-
-
-
-
-
-
-
-
-
+    void priestBonk()
+    {
+        Enemy.takeDamage(damage);
+    }
 
 
     //MC Skills
-    void mcSkill1()
+    void mcEnhance()
     {
         
     }
 
-    void mcSkill2()
+    void mcSunder()
     {
         
     }
 
-    void mcSkill3()
+    void mcSlash()
+    {
+        Enemy.takeDamage(damage);
+    }
+
+
+     //Fighter Skills
+    void fighterChop()
+    {
+        Enemy.takeDamage(damage);
+    }
+
+    void fighterCleave()
     {
 
     }
 
+    void fighterBreathe()
+    {
+
+    }*/
 }
