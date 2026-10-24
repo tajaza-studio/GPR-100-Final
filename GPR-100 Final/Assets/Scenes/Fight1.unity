@@ -359,13 +359,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  MC: {fileID: 0}
-  Priest: {fileID: 0}
-  Fighter: {fileID: 0}
+  MC: {fileID: 5303007616955637512}
+  Priest: {fileID: 8537914873219309636}
+  Fighter: {fileID: 1123952759203939280}
   damage: 3
   aoe: 0
   maxHealth: 20
   currentHealth: 20
+  isAlive: 1
 --- !u!1 &1270908413
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,13 +470,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  MC: {fileID: 0}
-  Priest: {fileID: 0}
-  Fighter: {fileID: 0}
+  MC: {fileID: 5303007616955637512}
+  Priest: {fileID: 8537914873219309636}
+  Fighter: {fileID: 1123952759203939280}
   damage: 3
   aoe: 0
   maxHealth: 0
   currentHealth: 20
+  isAlive: 1
 --- !u!1001 &1123952759203939279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,8 +533,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8510074875564960125, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1123952759203939281}
   m_SourcePrefab: {fileID: 100100000, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
+--- !u!1 &1123952759203939280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8510074875564960125, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
+  m_PrefabInstance: {fileID: 1123952759203939279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1123952759203939281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123952759203939280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  damage: 6
+  aoe: 0
+  maxHealth: 20
+  currentHealth: 20
+  isAlive: 1
 --- !u!1001 &5303007616955637511
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -588,8 +615,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4884220508394041144, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5303007616955637513}
   m_SourcePrefab: {fileID: 100100000, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
+--- !u!1 &5303007616955637512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4884220508394041144, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
+  m_PrefabInstance: {fileID: 5303007616955637511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5303007616955637513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5303007616955637512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  damage: 5
+  aoe: 0
+  maxHealth: 20
+  currentHealth: 20
+  isAlive: 1
 --- !u!1001 &8537914873219309635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -645,8 +697,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6946541525608305642, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8537914873219309637}
   m_SourcePrefab: {fileID: 100100000, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
+--- !u!1 &8537914873219309636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6946541525608305642, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
+  m_PrefabInstance: {fileID: 8537914873219309635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8537914873219309637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537914873219309636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  damage: 3
+  aoe: 0
+  maxHealth: 20
+  currentHealth: 20
+  isAlive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

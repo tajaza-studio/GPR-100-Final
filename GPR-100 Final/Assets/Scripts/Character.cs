@@ -2,15 +2,52 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    //[SerializeField] GameObject Enemy;
+    public int damage;
+    public bool aoe;
+    public int maxHealth;
+    public int currentHealth;
+    public bool isAlive;
+
+    public void takeDamage(int damage) 
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            isAlive = false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //MC Skills
+    void mcSkill1()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    void mcSkill2()
     {
         
     }
+
+    void mcSkill3()
+    {
+
+    }
+
 }
