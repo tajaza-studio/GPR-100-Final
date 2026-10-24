@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfed9d31f8e1dd54681f69eff7e50f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleSystem
+  priestSkillsUI: {fileID: 7788708975344477815, guid: 15cfd195b8589b0439373935263f1abf, type: 3}
+  mcSkillsUI: {fileID: 5925348286811475100, guid: f43ddca64168ba343a4fc46ab1bbb120, type: 3}
+  fighterSkillsUI: {fileID: 518924584434477934, guid: f528a45edf1251c4d8f6b695a8522ee2, type: 3}

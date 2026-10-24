@@ -4,6 +4,14 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class BattleSystem : MonoBehaviour
 {
+    [SerializeField] GameObject priestSkillsUI;
+    [SerializeField] GameObject mcSkillsUI;
+    [SerializeField] GameObject fighterSkillsUI;
+
+    GameObject priestSkillsInstance;
+    GameObject mcSkillsInstance;
+    GameObject fighterSkillsInstance;
+
     private State state;
 
     bool temp = false;
@@ -17,7 +25,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     private void Start() {
-        // it starts off as the player's turn
+        // it starts off as the priest's turn
         Debug.Log("It's Olive's turn!");
         state = State.PRIEST_TURN;
     }
@@ -29,7 +37,12 @@ public class BattleSystem : MonoBehaviour
                 if (temp) { // replace this with checking if priest dead
                     state = State.MC_TURN;
                 }
+                // show priest's skills
+                if (priestSkillsInstance == null) {
+                    priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
+                }
                 if (Input.GetKeyDown(KeyCode.Space)) {
+                    Destroy(priestSkillsInstance);
                     StartCoroutine(PriestAttack(2.0f));
                 }
                 break;
@@ -37,7 +50,11 @@ public class BattleSystem : MonoBehaviour
                 if (temp) { // replace this with checking if mc dead
                     state = State.FIGHTER_TURN;
                 }
+                if (mcSkillsInstance == null) {
+                    mcSkillsInstance = Instantiate(mcSkillsUI, mcSkillsUI.transform.position, Quaternion.identity);
+                }
                 if (Input.GetKeyDown(KeyCode.Space)) {
+                    Destroy(mcSkillsInstance);
                     StartCoroutine(MCAttack(2.0f));
                 }
                 break;
@@ -46,7 +63,11 @@ public class BattleSystem : MonoBehaviour
                     state = State.BUSY;
                     StartCoroutine(EnemyAttack(2.0f));
                 }
+                if (fighterSkillsInstance == null) {
+                    fighterSkillsInstance = Instantiate(fighterSkillsUI, fighterSkillsUI.transform.position, Quaternion.identity);
+                }
                 if (Input.GetKeyDown(KeyCode.Space)) {
+                    Destroy(fighterSkillsInstance);
                     StartCoroutine(FighterAttack(2.0f));
                 }
                 break;
@@ -62,6 +83,7 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
+        Destroy(priestSkillsInstance);
         Debug.Log("It's Your turn!");
         state = State.MC_TURN;
     }
@@ -74,7 +96,6 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
-
         Debug.Log("It's Dracovich's turn!");
         state = State.FIGHTER_TURN;
     }
