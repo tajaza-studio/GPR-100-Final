@@ -2,15 +2,36 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] GameObject MC;
+    [SerializeField] GameObject Priest;
+    [SerializeField] GameObject Fighter;
+
+
+    public int damage;
+    public bool aoe;
+    public int maxHealth;
+    public int currentHealth;
+
+    void attack(int damage, bool aoe)
     {
-        
+        if (aoe) 
+        {
+            /*for (each character)
+            {
+                if (!isAlive)
+                    continue;
+                character.takeDamage(damage);
+            }*/
+
+           
+            return;
+        }
+
+        //character.takeDamage(damage);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    //void takeDamage(damage);
+
+
 }
