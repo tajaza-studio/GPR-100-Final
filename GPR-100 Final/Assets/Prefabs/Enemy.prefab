@@ -103,3 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  MC: {fileID: 4884220508394041144, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
+  Priest: {fileID: 6946541525608305642, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
+  Fighter: {fileID: 8510074875564960125, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
+  damage: 0
+  aoe: 0
+  maxHealth: 0
+  currentHealth: 0
+  isAlive: 0

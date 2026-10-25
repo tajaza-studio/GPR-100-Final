@@ -17,12 +17,14 @@ public class BattleSystem : MonoBehaviour
     bool setUpEnemies = true;
     float enemyBoundSize = 8f;
 
-    private State state;
+    [HideInInspector]
+    public State state;
 
     bool temp = false;
 
     // these are the states for turn based combat
-    private enum State {
+    [HideInInspector]
+    public enum State {
         PRIEST_TURN,
         MC_TURN,
         FIGHTER_TURN,
