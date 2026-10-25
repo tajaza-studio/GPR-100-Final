@@ -4,6 +4,7 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class BattleSystem : MonoBehaviour
 {
+    [Header("Skills UI")]
     [SerializeField] GameObject priestSkillsUI;
     [SerializeField] GameObject mcSkillsUI;
     [SerializeField] GameObject fighterSkillsUI;
@@ -11,6 +12,10 @@ public class BattleSystem : MonoBehaviour
     GameObject priestSkillsInstance;
     GameObject mcSkillsInstance;
     GameObject fighterSkillsInstance;
+
+    EnemyManager enemyManager;
+    bool setUpEnemies = true;
+    float enemyBoundSize = 8f;
 
     private State state;
 
@@ -25,12 +30,25 @@ public class BattleSystem : MonoBehaviour
     }
 
     private void Start() {
+        // get enemy manager script
+        enemyManager = GetComponent<EnemyManager>();
+
         // it starts off as the priest's turn
         Debug.Log("It's Olive's turn!");
         state = State.PRIEST_TURN;
     }
 
     private void Update() {
+        // set up enemies
+        if (setUpEnemies) {
+            float enemyDistance = enemyBoundSize * 2 / (enemyManager.enemyCount + 1);
+            for (int i = 0; i < enemyManager.enemyCount; i++) {
+                Vector3 enemyPos = new Vector3(-enemyBoundSize + enemyDistance * (i + 1), 2.5f, 0f);
+                Instantiate(enemyManager.enemies[i], enemyPos, Quaternion.identity);
+            }
+            setUpEnemies = false;
+        }
+
         // case for each of the character's turns
         switch (state) {
             case (State.PRIEST_TURN):
@@ -73,6 +91,8 @@ public class BattleSystem : MonoBehaviour
                 break;
         }
     }
+
+
 
     IEnumerator PriestAttack(float seconds) {
         // sets the state to busy so the player cant act
