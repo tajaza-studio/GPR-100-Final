@@ -298,13 +298,14 @@ GameObject:
   m_Component:
   - component: {fileID: 988421868}
   - component: {fileID: 988421867}
+  - component: {fileID: 988421869}
   m_Layer: 0
   m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &988421867
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -373,11 +374,25 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &988421869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988421866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc122ab4581f1245a8ab361fb0e0b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIController
+  battleSystem: {fileID: 903374632322140037}
+  skillHovered: 0
 --- !u!1 &1167513552
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,9 +888,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbd8820f6771f647b32bd986c60488f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
-  enemyPrefab: {fileID: 0}
-  enemyCount: 0
+  enemyPrefab: {fileID: 983306277957200071, guid: 6b42a60c778ea984f86cf9afe14cac1d, type: 3}
+  enemyCount: 4
   enemies: []
+--- !u!114 &903374632322140037 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3621567190825739001, guid: 469872945c8333140b0d8a23cb3a09f3, type: 3}
+  m_PrefabInstance: {fileID: 903374632322140034}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903374632322140035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfed9d31f8e1dd54681f69eff7e50f22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleSystem
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
