@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using static UIController;
 //using UnityEditor.ShaderKeywordFilter;
 
 public class BattleSystem : MonoBehaviour
@@ -9,15 +10,19 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] GameObject mcSkillsUI;
     [SerializeField] GameObject fighterSkillsUI;
 
+    [Header("UI Controller")]
+    [SerializeField] UIController uiController;
+
     GameObject priestSkillsInstance;
     GameObject mcSkillsInstance;
     GameObject fighterSkillsInstance;
 
     EnemyManager enemyManager;
     bool setUpEnemies = true;
-    float enemyBoundSize = 8f;
 
     [HideInInspector]
+    public float enemyBoundSize = 8f;
+
     public State state;
 
     bool temp = false;
@@ -43,9 +48,8 @@ public class BattleSystem : MonoBehaviour
     private void Update() {
         // set up enemies
         if (setUpEnemies) {
-            float enemyDistance = enemyBoundSize * 2 / (enemyManager.enemyCount + 1);
             for (int i = 0; i < enemyManager.enemyCount; i++) {
-                Vector3 enemyPos = new Vector3(-enemyBoundSize + enemyDistance * (i + 1), 2.5f, 0f);
+                Vector3 enemyPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
                 Instantiate(enemyManager.enemies[i], enemyPos, Quaternion.identity);
             }
             setUpEnemies = false;
@@ -62,8 +66,13 @@ public class BattleSystem : MonoBehaviour
                     priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    Destroy(priestSkillsInstance);
-                    StartCoroutine(PriestAttack(2.0f));
+                    if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
+                        uiController.selectionState = SelectionState.BUSY;
+                        Destroy(priestSkillsInstance);
+                        StartCoroutine(PriestAttack(2.0f));
+                    } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
+                        uiController.FindSkill();
+                    }
                 }
                 break;
             case (State.MC_TURN):
@@ -74,8 +83,14 @@ public class BattleSystem : MonoBehaviour
                     mcSkillsInstance = Instantiate(mcSkillsUI, mcSkillsUI.transform.position, Quaternion.identity);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    Destroy(mcSkillsInstance);
-                    StartCoroutine(MCAttack(2.0f));
+                    if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
+                        uiController.selectionState = SelectionState.BUSY;
+                        Destroy(mcSkillsInstance);
+                        StartCoroutine(MCAttack(2.0f));
+                    } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
+                        Debug.Log(state);
+                        uiController.FindSkill();
+                    }
                 }
                 break;
             case (State.FIGHTER_TURN):
@@ -87,14 +102,21 @@ public class BattleSystem : MonoBehaviour
                     fighterSkillsInstance = Instantiate(fighterSkillsUI, fighterSkillsUI.transform.position, Quaternion.identity);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    Destroy(fighterSkillsInstance);
-                    StartCoroutine(FighterAttack(2.0f));
+                    if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
+                        uiController.selectionState = SelectionState.BUSY;
+                        Destroy(fighterSkillsInstance);
+                        StartCoroutine(FighterAttack(2.0f));
+                    } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
+                        uiController.FindSkill();
+                    }
                 }
                 break;
         }
     }
 
-
+    public float GetEnemyDistance() {
+        return enemyBoundSize * 2 / (enemyManager.enemyCount + 1);
+    }
 
     IEnumerator PriestAttack(float seconds) {
         // sets the state to busy so the player cant act
@@ -105,7 +127,7 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
-        Destroy(priestSkillsInstance);
+        uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Your turn!");
         state = State.MC_TURN;
     }
@@ -118,6 +140,7 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Dracovich's turn!");
         state = State.FIGHTER_TURN;
     }
@@ -142,6 +165,7 @@ public class BattleSystem : MonoBehaviour
 
         // when it's done waiting, the player can act again
         Debug.Log("It's Olive's turn!");
+        uiController.selectionState = SelectionState.SKILL;
         state = State.PRIEST_TURN;
     }
 }

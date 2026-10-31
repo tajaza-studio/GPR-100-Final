@@ -10,14 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1113380247524878949}
   - component: {fileID: 5940247457720277334}
-  - component: {fileID: 1737894327772628938}
   m_Layer: 0
   m_Name: Enemy Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1113380247524878949
 Transform:
   m_ObjectHideFlags: 0
@@ -91,16 +90,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1737894327772628938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1305239305544734595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc122ab4581f1245a8ab361fb0e0b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIController
-  battleSystem: {fileID: 0}
