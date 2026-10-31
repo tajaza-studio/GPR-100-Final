@@ -303,7 +303,7 @@ PrefabInstance:
     - target: {fileID: 4708976802735378196, guid: 3f0e03d5a02c82944a4387c541c4c9be, type: 3}
       propertyPath: allyPointer
       value: 
-      objectReference: {fileID: 8948230806890217596, guid: 5d2f0188f2c325745b67d535dafd7dcf, type: 3}
+      objectReference: {fileID: 203824817574393012, guid: 82fb9752c9a1a8b469edd6d793e93a9a, type: 3}
     - target: {fileID: 4708976802735378196, guid: 3f0e03d5a02c82944a4387c541c4c9be, type: 3}
       propertyPath: battleSystem
       value: 
