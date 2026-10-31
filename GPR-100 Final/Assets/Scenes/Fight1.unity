@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1118261744}
   - component: {fileID: 1118261746}
   m_Layer: 0
-  m_Name: Rogue2
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 1270908414}
   - component: {fileID: 1270908416}
   m_Layer: 0
-  m_Name: Rogue1
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   Fighter: {fileID: 1123952759203939280}
   damage: 3
   aoe: 0
-  maxHealth: 0
+  maxHealth: 20
   currentHealth: 20
   isAlive: 1
 --- !u!1001 &1123952759203939279
@@ -555,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  Enemy: {fileID: 1270908413}
   damage: 6
   aoe: 0
   maxHealth: 20
@@ -637,6 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  Enemy: {fileID: 1270908413}
   damage: 5
   aoe: 0
   maxHealth: 20
@@ -719,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
+  Enemy: {fileID: 1118261743}
   damage: 3
   aoe: 0
   maxHealth: 20

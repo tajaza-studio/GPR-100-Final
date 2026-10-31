@@ -2,14 +2,25 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    //[SerializeField] GameObject Enemy;
+    [SerializeField] GameObject Enemy;
+
+    Enemy enemyScript;
+
     public int damage;
     public bool aoe;
     public int maxHealth;
     public int currentHealth;
     public bool isAlive;
 
-    public void takeDamage(int damage) 
+    void Start()
+    {
+        enemyScript = Enemy.GetComponent<Enemy>();
+        Debug.Log("The Fight is Starting!");
+    }
+
+    
+
+    public void takeDamage(int damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -18,53 +29,69 @@ public class Character : MonoBehaviour
         }
     }
 
-   //Priest Skills
-    /*void priestHeal()
-    {
+    
+    
 
-    }
+    //Priest Skills
+     void priestHeal()
+     {
 
-    void priestBlessing()
-    {
+     }
 
-    }
+     void priestBlessing()
+     {
 
-    void priestBonk()
-    {
-        Enemy.takeDamage(damage);
-    }
+     }
 
-
-    //MC Skills
-    void mcEnhance()
-    {
-        
-    }
-
-    void mcSunder()
-    {
-        
-    }
-
-    void mcSlash()
-    {
-        Enemy.takeDamage(damage);
+     void priestBonk()
+     {
+        Debug.Log("The Enemy Was Bonked by the Priest!");
+        enemyScript.takeDamage(damage);
     }
 
 
-     //Fighter Skills
-    void fighterChop()
-    {
-        Enemy.takeDamage(damage);
+     //MC Skills
+     void mcEnhance()
+     {
+
+     }
+
+     void mcSunder()
+     {
+
+     }
+
+     void mcSlash()
+     {
+        Debug.Log("The Enemy Was Slashed by the MC!");
+        enemyScript.takeDamage(damage);
     }
 
-    void fighterCleave()
-    {
 
+//Fighter Skills
+     void fighterChop()
+     {
+        Debug.Log("The Enemy Was Chopped by the Fighter!");
+        enemyScript.takeDamage(damage);
+     }
+
+     void fighterCleave()
+     {
+
+     }
+
+     void fighterBreathe()
+     {
+
+     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fighterChop();
+        }
     }
 
-    void fighterBreathe()
-    {
 
-    }*/
 }
