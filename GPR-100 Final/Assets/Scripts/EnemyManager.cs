@@ -38,9 +38,9 @@ public class EnemyManager : MonoBehaviour
         setUpEnemies = false;
     }
 
-    public void EnemyDies(int enemyIndex) {
-        Destroy(enemies[enemyIndex]);
-        enemies.RemoveAt(enemyIndex);
+    public void EnemyDies(GameObject enemy) {
+        enemies.Remove(enemy);
+        Destroy(enemy);
         SetUpEnemies();
     }
 }
