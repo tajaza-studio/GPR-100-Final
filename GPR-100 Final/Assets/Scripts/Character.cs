@@ -36,7 +36,15 @@ public class Character : MonoBehaviour
         return heal;
     }
 
+    public void buffDamage()
+    {
+        damage += 3;
+    }
     
+    public void debuffDamage()
+    {
+
+    }
     
 
     //Priest Skills
@@ -45,14 +53,16 @@ public class Character : MonoBehaviour
         //int healthIncrease = healHealth(damage);
         //Character.healHealth(damage);
         //Debug.Log($"Your ally's health was increased by {healthIncrease} !");
-    }
+     }
 
      void priestBlessing()
      {
-
+        //int healthIncrease = healHealth(damage);
+        //Character.healHealth(damage);
+        //Debug.Log($"All of your allies health were increased by {healthIncrease} !");
      }
 
-     public void priestBonk(int enemyIndex)
+    public void priestBonk(int enemyIndex)
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Bonked by the Priest!");
@@ -63,7 +73,8 @@ public class Character : MonoBehaviour
      //MC Skills
      void mcEnhance()
      {
-
+        //Character.buffDamage();
+        //Debug.Log("MC buffed your allies damage!");
      }
 
      void mcSunder()
@@ -99,8 +110,10 @@ public class Character : MonoBehaviour
 
      void fighterBreathe()
      {
-
-     }
+        //int healthIncrease = healHealth(damage);
+        //Character.healHealth(damage);
+        //Debug.Log($"Fighter healed their health by {healthIncrease} !");
+    }
 
     void Update()
     {
