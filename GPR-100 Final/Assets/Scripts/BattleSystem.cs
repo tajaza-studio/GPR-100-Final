@@ -49,6 +49,7 @@ public class BattleSystem : MonoBehaviour
 
     private void Update() {
 
+        // tolsta said to refactor this into https://gameprogrammingpatterns.com/state.html
         // case for each of the character's turns
         switch (state) {
             case (State.PRIEST_TURN):
