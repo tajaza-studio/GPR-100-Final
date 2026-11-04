@@ -95,10 +95,6 @@ public class UIController : MonoBehaviour
                     Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance.transform.position = enemyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
-                    enemyPointerSpawned = false;
-                    Destroy(enemyPointerInstance);
-                }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
                     enemyHovered = 0;
@@ -114,13 +110,6 @@ public class UIController : MonoBehaviour
                         allEnemyPointerInstance.Add(Instantiate(enemyPointer, enemyPointerPos, Quaternion.identity));
                     }
                     enemyPointerSpawned = true;
-                }
-                if (Input.GetKeyDown(KeyCode.Space)) {
-                    enemyPointerSpawned = false;
-                    for (int i = 0; i < enemyManager.enemyCount; i++) {
-                        Destroy(allEnemyPointerInstance[0]);
-                        allEnemyPointerInstance.RemoveAt(0);
-                    }
                 }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
@@ -168,13 +157,6 @@ public class UIController : MonoBehaviour
                     }
                     allyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
-                    allyPointerSpawned = false;
-                    for (int i = 0; i < 3; i++) {
-                        Destroy(allAllyPointerInstance[0]);
-                        allAllyPointerInstance.RemoveAt(0);
-                    }
-                }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
                     allyPointerSpawned = false;
@@ -195,16 +177,33 @@ public class UIController : MonoBehaviour
                     allyPointerInstance = (Instantiate(allyPointer, allyPointerPos, Quaternion.identity));
                     allyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
-                    allyHovered = 0;
-                    allyPointerSpawned = false;
-                    Destroy(allyPointerInstance);
-                }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
                     allyHovered = 0;
                     allyPointerSpawned = false;
                     Destroy(allyPointerInstance);
+                }
+                break;
+            case (SelectionState.BUSY):
+                // delete and reset everything
+
+                enemyPointerSpawned = false;
+                enemyHovered = 0;
+                
+                Destroy(enemyPointerInstance);
+
+                for (int i = 0; i < enemyManager.enemyCount; i++) {
+                    Destroy(allEnemyPointerInstance[0]);
+                    allEnemyPointerInstance.RemoveAt(0);
+                }
+
+                allyPointerSpawned = false;
+                allyHovered = 0;
+
+                Destroy(allyPointerInstance);
+                for (int i = 0; i < 3; i++) {
+                    Destroy(allAllyPointerInstance[0]);
+                    allAllyPointerInstance.RemoveAt(0);
                 }
                 break;
         }

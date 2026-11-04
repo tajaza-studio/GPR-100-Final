@@ -18,14 +18,8 @@ public class EnemyManager : MonoBehaviour
         enemies = new List<GameObject>();
 
         // set up enemies
-        if (setUpEnemies) {
-            for (int i = 0; i < enemyCount; i++) {
-                Vector3 enemyPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
-                GameObject enemyInstance = Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
-                enemies.Add(enemyInstance);
-            }
-            setUpEnemies = false;
-        }
+        SetUpEnemies();
+
         for (int i = 0; i < enemyCount; i++) {
             enemies.Add(enemyPrefab);
         }
@@ -33,5 +27,20 @@ public class EnemyManager : MonoBehaviour
 
     public float GetEnemyDistance() {
         return enemyBoundSize * 2 / (enemyCount + 1);
+    }
+
+    public void SetUpEnemies() {
+        for (int i = 0; i < enemyCount; i++) {
+            Vector3 enemyPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
+            GameObject enemyInstance = Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
+            enemies.Add(enemyInstance);
+        }
+        setUpEnemies = false;
+    }
+
+    public void EnemyDies(int enemyIndex) {
+        Destroy(enemies[enemyIndex]);
+        enemies.RemoveAt(enemyIndex);
+        SetUpEnemies();
     }
 }
