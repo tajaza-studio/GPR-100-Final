@@ -1,10 +1,9 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] GameObject Enemy;
-
-    Enemy enemyScript;
+    [SerializeField] EnemyManager enemyManager;
 
     public int damage;
     public bool aoe;
@@ -14,7 +13,6 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        enemyScript = Enemy.GetComponent<Enemy>();
         Debug.Log("The Fight is Starting!");
     }
 
@@ -43,11 +41,12 @@ public class Character : MonoBehaviour
 
      }
 
-     void priestBonk()
+     public void priestBonk(int enemyIndex)
      {
+        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Bonked by the Priest!");
         enemyScript.takeDamage(damage);
-    }
+     }
 
 
      //MC Skills
@@ -61,19 +60,21 @@ public class Character : MonoBehaviour
 
      }
 
-     void mcSlash()
+     public void mcSlash(int enemyIndex)
      {
+        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Slashed by the MC!");
         enemyScript.takeDamage(damage);
-    }
+     }
 
 
-//Fighter Skills
-     void fighterChop()
-     {
+    //Fighter Skills
+    public void fighterChop(int enemyIndex)
+    {
+        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Chopped by the Fighter!");
         enemyScript.takeDamage(damage);
-     }
+    }
 
      void fighterCleave()
      {
@@ -87,10 +88,10 @@ public class Character : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            fighterChop();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    fighterChop();
+        //}
     }
 
 

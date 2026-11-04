@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
     [SerializeField] BattleSystem battleSystem;
 
     [SerializeField] EnemyManager enemyManager;
-
+    
     private SpriteRenderer spriteRenderer;
 
     public int skillHovered = 0;
@@ -81,22 +81,21 @@ public class UIController : MonoBehaviour
                 break;
             case (SelectionState.ENEMY):
                 if (!enemyPointerSpawned) {
-                    Vector3 enemyPointerPos = new Vector3(-battleSystem.enemyBoundSize + battleSystem.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
+                    Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance = Instantiate(enemyPointer, enemyPointerPos, Quaternion.identity);
                     enemyPointerSpawned = true;
                 }
                 if (Input.GetKeyDown(KeyCode.A)) {
                     enemyHovered = (enemyHovered + enemyManager.enemyCount - 1) % enemyManager.enemyCount;
-                    Vector3 enemyPointerPos = new Vector3(-battleSystem.enemyBoundSize + battleSystem.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
+                    Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance.transform.position = enemyPointerPos;
                 }
                 if (Input.GetKeyDown(KeyCode.D)) {
                     enemyHovered = (enemyHovered + 1) % enemyManager.enemyCount;
-                    Vector3 enemyPointerPos = new Vector3(-battleSystem.enemyBoundSize + battleSystem.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
+                    Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance.transform.position = enemyPointerPos;
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    enemyHovered = 0;
                     enemyPointerSpawned = false;
                     Destroy(enemyPointerInstance);
                 }
@@ -111,7 +110,7 @@ public class UIController : MonoBehaviour
             case (SelectionState.ALL_ENEMY):
                 if (!enemyPointerSpawned) {
                     for (int i = 0; i < enemyManager.enemyCount; i++) {
-                        Vector3 enemyPointerPos = new Vector3(-battleSystem.enemyBoundSize + battleSystem.GetEnemyDistance() * (i + 1), enemyPointerY, 0f);
+                        Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (i + 1), enemyPointerY, 0f);
                         allEnemyPointerInstance.Add(Instantiate(enemyPointer, enemyPointerPos, Quaternion.identity));
                     }
                     enemyPointerSpawned = true;

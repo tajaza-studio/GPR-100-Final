@@ -13,15 +13,17 @@ public class BattleSystem : MonoBehaviour
     [Header("UI Controller")]
     [SerializeField] UIController uiController;
 
+    [Header("Characters")]
+    [SerializeField] Character priest;
+    [SerializeField] Character mc;
+    [SerializeField] Character fighter;
+
     GameObject priestSkillsInstance;
     GameObject mcSkillsInstance;
     GameObject fighterSkillsInstance;
 
     EnemyManager enemyManager;
     bool setUpEnemies = true;
-
-    [HideInInspector]
-    public float enemyBoundSize = 8f;
 
     public State state;
 
@@ -46,14 +48,6 @@ public class BattleSystem : MonoBehaviour
     }
 
     private void Update() {
-        // set up enemies
-        if (setUpEnemies) {
-            for (int i = 0; i < enemyManager.enemyCount; i++) {
-                Vector3 enemyPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
-                Instantiate(enemyManager.enemies[i], enemyPos, Quaternion.identity);
-            }
-            setUpEnemies = false;
-        }
 
         // case for each of the character's turns
         switch (state) {
@@ -114,19 +108,20 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public float GetEnemyDistance() {
-        return enemyBoundSize * 2 / (enemyManager.enemyCount + 1);
-    }
-
     IEnumerator PriestAttack(float seconds) {
         // sets the state to busy so the player cant act
         state = State.BUSY;
 
         // this will be changed with what actually happens
-        Debug.Log("Olive Attacks!");
+        switch (uiController.skillHovered) {
+            case (2):
+                priest.priestBonk(uiController.enemyHovered);
+                break;
+        }
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Your turn!");
         state = State.MC_TURN;
@@ -135,11 +130,15 @@ public class BattleSystem : MonoBehaviour
         // sets the state to busy so the player cant act
         state = State.BUSY;
 
-        // this will be changed with what actually happens
-        Debug.Log("You Attack!");
+        switch (uiController.skillHovered) {
+            case (2):
+                mc.mcSlash(uiController.enemyHovered);
+                break;
+        }
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Dracovich's turn!");
         state = State.FIGHTER_TURN;
@@ -148,11 +147,15 @@ public class BattleSystem : MonoBehaviour
         // sets the state to busy so the player cant act
         state = State.BUSY;
 
-        // this will be changed with what actually happens
-        Debug.Log("Dracovich Attack!");
+        switch (uiController.skillHovered) {
+            case (0):
+                fighter.fighterChop(uiController.enemyHovered);
+                break;
+        }
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.enemyHovered = 0;
         StartCoroutine(EnemyAttack(2.0f));
     }
 
