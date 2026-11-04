@@ -38,9 +38,15 @@ public class EnemyManager : MonoBehaviour
         setUpEnemies = false;
     }
 
+    void UpdateEnemies() {
+        for (int i = 0; i < enemies.Count; i++) {
+            enemies[i].transform.position = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
+        }
+    }
+
     public void EnemyDies(GameObject enemy) {
         enemies.Remove(enemy);
         Destroy(enemy);
-        SetUpEnemies();
+        UpdateEnemies();
     }
 }
