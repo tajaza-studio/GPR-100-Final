@@ -3,3 +3,5 @@ Concept: Player selection of character skills will interact meaningfully with th
 This requires functional interaction between the UI and outlined behaviors of the characters. If the UI breaks in some way, or if the character skills do not behave properly, the core gameplay loop cannot work.
 
 The player should be able to damage the enemy with the characters' attack skills.
+
+Outcome: passed; Connecting different features turned out to be more intricate than anticipated
