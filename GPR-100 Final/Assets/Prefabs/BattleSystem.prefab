@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089930802854606139}
   - component: {fileID: 3621567190825739001}
+  - component: {fileID: 4710049752372294043}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -47,3 +48,24 @@ MonoBehaviour:
   priestSkillsUI: {fileID: 7788708975344477815, guid: 15cfd195b8589b0439373935263f1abf, type: 3}
   mcSkillsUI: {fileID: 5925348286811475100, guid: f43ddca64168ba343a4fc46ab1bbb120, type: 3}
   fighterSkillsUI: {fileID: 518924584434477934, guid: f528a45edf1251c4d8f6b695a8522ee2, type: 3}
+  uiController: {fileID: 0}
+  priest: {fileID: 0}
+  mc: {fileID: 0}
+  fighter: {fileID: 0}
+  state: 0
+--- !u!114 &4710049752372294043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822228128212526030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbbd8820f6771f647b32bd986c60488f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
+  enemyPrefab: {fileID: 983306277957200071, guid: 6b42a60c778ea984f86cf9afe14cac1d, type: 3}
+  enemyCount: 4
+  enemies: []
+  enemyBoundSize: 8

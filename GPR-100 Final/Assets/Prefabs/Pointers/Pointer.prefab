@@ -104,3 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
   battleSystem: {fileID: 0}
+  enemyManager: {fileID: 0}
+  skillHovered: 0
+  enemyPointer: {fileID: 1305239305544734595, guid: 0b4d10c08be980c4d9c64c95226ba4bf, type: 3}
+  enemyHovered: 0
+  allyPointer: {fileID: 203824817574393012, guid: 82fb9752c9a1a8b469edd6d793e93a9a, type: 3}
+  allyHovered: 0
+  selectionState: 0

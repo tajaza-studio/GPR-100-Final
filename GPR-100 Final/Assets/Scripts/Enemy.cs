@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            //enemyManager.EnemyDies();
+            enemyManager.EnemyDies(gameObject);
         }
     }
 
