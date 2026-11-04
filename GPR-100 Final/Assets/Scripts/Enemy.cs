@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] EnemyManager enemyManager;
+
     [SerializeField] GameObject MC;
     [SerializeField] GameObject Priest;
     [SerializeField] GameObject Fighter;
@@ -92,7 +94,7 @@ public class Enemy : MonoBehaviour
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            isAlive = false;
+            //enemyManager.EnemyDies();
         }
     }
 

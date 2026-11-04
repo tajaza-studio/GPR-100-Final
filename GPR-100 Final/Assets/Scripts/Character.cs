@@ -13,10 +13,8 @@ public class Character : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("The Fight is Starting!");
+        Debug.Log("The Fight is Starting!"); 
     }
-
-    
 
     public void takeDamage(int damage)
     {
@@ -27,14 +25,27 @@ public class Character : MonoBehaviour
         }
     }
 
+    public int healHealth(int damage)
+    {
+        int heal = damage + 2;
+        currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        return heal;
+    }
+
     
     
 
     //Priest Skills
      void priestHeal()
      {
-
-     }
+        //int healthIncrease = healHealth(damage);
+        //Character.healHealth(damage);
+        //Debug.Log($"Your ally's health was increased by {healthIncrease} !");
+    }
 
      void priestBlessing()
      {
@@ -78,7 +89,12 @@ public class Character : MonoBehaviour
 
      void fighterCleave()
      {
-
+        for (int i = 0; i < enemyManager.enemies.Count; i++)
+        {
+            enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
+            enemyScript.takeDamage(damage);
+        }
+        Debug.Log("All Enemies were Cleaved by the Fighter!");
      }
 
      void fighterBreathe()
