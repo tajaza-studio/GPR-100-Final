@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public bool isAlive;
 
+    public HealthBar healthBar;
+
     void Start()
     {
         mcScript = MC.GetComponent<Character>();
@@ -92,6 +94,7 @@ public class Enemy : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
             enemyManager.EnemyDies(gameObject);
