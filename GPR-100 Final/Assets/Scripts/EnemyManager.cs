@@ -22,11 +22,6 @@ public class EnemyManager : MonoBehaviour
 
         // set up enemies
         SetUpEnemies();
-
-        for (int i = 0; i < enemyCount; i++) {
-            enemies.Add(enemyPrefab);
-            healthBars.Add(enemyHealthBar);
-        }
     }
 
     public float GetEnemyDistance() {
