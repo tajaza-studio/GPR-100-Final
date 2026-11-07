@@ -4,6 +4,15 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class Character : MonoBehaviour
 {
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] CharacterManager characterManager;
+
+    [SerializeField] GameObject MC;
+    [SerializeField] GameObject Priest;
+    [SerializeField] GameObject Fighter;
+
+    Character mcScript;
+    Character priestScript;
+    Character fighterScript;
 
     public int damage;
     public bool aoe;
@@ -43,23 +52,59 @@ public class Character : MonoBehaviour
     
     public void debuffDamage()
     {
-
+        damage -= 2;
     }
     
 
     //Priest Skills
-     void priestHeal()
+     public void priestHeal(int characterIndex)
      {
-        //int healthIncrease = healHealth(damage);
-        //Character.healHealth(damage);
-        //Debug.Log($"Your ally's health was increased by {healthIncrease} !");
+        if (characterIndex == 0)
+        {
+            int healthIncrease = healHealth(damage);
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
+            Debug.Log($"The Priest's health was increased by {healthIncrease} !");
+        }
+
+        if (characterIndex == 1)
+        {
+            int healthIncrease = healHealth(damage);
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
+            Debug.Log($"The MC's health was increased by {healthIncrease} !");
+        }
+
+        if (characterIndex == 2)
+        {
+            int healthIncrease = healHealth(damage);
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
+            Debug.Log($"The Fighter's health was increased by {healthIncrease} !");
+        }
      }
 
-     void priestBlessing()
+     public void priestBlessing()
      {
-        //int healthIncrease = healHealth(damage);
-        //Character.healHealth(damage);
-        //Debug.Log($"All of your allies health were increased by {healthIncrease} !");
+        int healthIncrease = healHealth(damage);
+        for (int i = 0; i < characterManager.characters.Count; i++)
+        {
+            if (i == 0)
+            {
+                healHealth(damage);
+                characterManager.characters[i].TryGetComponent<Character>(out Character priestScript);
+            }
+
+            if (i == 1)
+            {
+                healHealth(damage);
+                characterManager.characters[i].TryGetComponent<Character>(out Character mcScript);
+            }
+
+            if (i == 2)
+            {
+                healHealth(damage);
+                characterManager.characters[i].TryGetComponent<Character>(out Character fighterScript);
+            }
+        }
+        Debug.Log($"All of your allies health were increased by {healthIncrease} !");
      }
 
     public void priestBonk(int enemyIndex)
@@ -67,7 +112,7 @@ public class Character : MonoBehaviour
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Bonked by the Priest!");
         enemyScript.takeDamage(damage);
-     }
+    }
 
 
      //MC Skills
@@ -108,19 +153,19 @@ public class Character : MonoBehaviour
         Debug.Log("All Enemies were Cleaved by the Fighter!");
      }
 
-     void fighterBreathe()
+     public void fighterBreathe(int damage)
      {
-        //int healthIncrease = healHealth(damage);
-        //Character.healHealth(damage);
-        //Debug.Log($"Fighter healed their health by {healthIncrease} !");
-    }
+        int healthIncrease = healHealth(damage);
+        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+        Debug.Log($"Fighter healed their health by {healthIncrease} !");
+     }
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    fighterChop();
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            priestHeal(0);
+        }
     }
 
 

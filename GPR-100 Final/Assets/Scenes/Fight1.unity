@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  enemyManager: {fileID: 0}
   MC: {fileID: 5303007616955637512}
   Priest: {fileID: 8537914873219309636}
   Fighter: {fileID: 1123952759203939280}
@@ -367,6 +368,56 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 20
   isAlive: 1
+  healthBar: {fileID: 0}
+--- !u!1 &1188811091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188811093}
+  - component: {fileID: 1188811094}
+  m_Layer: 0
+  m_Name: CharacterManagerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1188811093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188811091}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 77365.625, y: -18051.139, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1188811094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188811091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dfaa866a9e619449d54b38c7244e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  MC: {fileID: 5303007616955637512}
+  Priest: {fileID: 8537914873219309636}
+  Fighter: {fileID: 1123952759203939280}
+  characterCount: 0
+  characters: []
 --- !u!1 &1270908413
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  enemyManager: {fileID: 0}
   MC: {fileID: 5303007616955637512}
   Priest: {fileID: 8537914873219309636}
   Fighter: {fileID: 1123952759203939280}
@@ -478,6 +530,7 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 20
   isAlive: 1
+  healthBar: {fileID: 0}
 --- !u!1001 &1123952759203939279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -555,11 +608,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  Enemy: {fileID: 1270908413}
+  enemyManager: {fileID: 0}
+  characterManager: {fileID: 1188811094}
+  MC: {fileID: 0}
+  Priest: {fileID: 0}
+  Fighter: {fileID: 0}
   damage: 6
   aoe: 0
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 100
+  currentHealth: 1
   isAlive: 1
 --- !u!1001 &5303007616955637511
 PrefabInstance:
@@ -638,11 +695,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  Enemy: {fileID: 1270908413}
+  enemyManager: {fileID: 0}
+  characterManager: {fileID: 1188811094}
+  MC: {fileID: 0}
+  Priest: {fileID: 0}
+  Fighter: {fileID: 0}
   damage: 5
   aoe: 0
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 100
+  currentHealth: 1
   isAlive: 1
 --- !u!1001 &8537914873219309635
 PrefabInstance:
@@ -721,11 +782,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a5dfc8eabbf3f4cbb0e2d397162d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
-  Enemy: {fileID: 1118261743}
+  enemyManager: {fileID: 0}
+  characterManager: {fileID: 1188811094}
+  MC: {fileID: 0}
+  Priest: {fileID: 0}
+  Fighter: {fileID: 0}
   damage: 3
   aoe: 0
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 100
+  currentHealth: 1
   isAlive: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -737,3 +802,4 @@ SceneRoots:
   - {fileID: 1123952759203939279}
   - {fileID: 1270908415}
   - {fileID: 1118261745}
+  - {fileID: 1188811093}
