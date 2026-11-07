@@ -154,10 +154,10 @@ public class Character : MonoBehaviour
         Debug.Log("All Enemies were Cleaved by the Fighter!");
      }
 
-     public void fighterBreathe(int damage)
+     public void fighterBreathe(int healAmount)
      {
-        int healthIncrease = healHealth(damage);
         characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+        int healthIncrease = fighterScript.healHealth(healAmount);
         Debug.Log($"Fighter healed their health by {healthIncrease} !");
      }
 
