@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1089930802854606139}
   - component: {fileID: 3621567190825739001}
   - component: {fileID: 4710049752372294043}
+  - component: {fileID: 410514295183765683}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -71,3 +72,20 @@ MonoBehaviour:
   enemies: []
   healthBars: []
   enemyBoundSize: 8
+--- !u!114 &410514295183765683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822228128212526030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dfaa866a9e619449d54b38c7244e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
+  MC: {fileID: 0}
+  Priest: {fileID: 0}
+  Fighter: {fileID: 0}
+  characterCount: 0
+  characters: []

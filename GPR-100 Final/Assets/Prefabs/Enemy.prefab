@@ -110,6 +110,6 @@ MonoBehaviour:
   damage: 0
   aoe: 1
   maxHealth: 10
-  currentHealth: 7
+  currentHealth: 10
   isAlive: 0
   healthBar: {fileID: 269744967128798243, guid: 577d7a691a87a954887848b595a14570, type: 3}

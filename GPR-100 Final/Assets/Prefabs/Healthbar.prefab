@@ -207,7 +207,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4724949250930854270}
@@ -276,4 +276,4 @@ MonoBehaviour:
   enemy: {fileID: 2044675791855202382, guid: 6b42a60c778ea984f86cf9afe14cac1d, type: 3}
   health: {fileID: 8258195037984533467}
   maxValue: 0
-  value: 0
+  value: -5

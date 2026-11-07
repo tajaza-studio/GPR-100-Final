@@ -121,12 +121,12 @@ public class BattleSystem : MonoBehaviour
 
         // this will be changed with what actually happens
         switch (uiController.skillHovered) {
-            /*case 0:
+            case 0:
                 priest.priestHeal(uiController.allyHovered);
                 break;
             case 1:
                 priest.priestBlessing();
-                break;*/
+                break;
             case (2):
                 priest.priestBonk(uiController.enemyHovered);
                 break;
@@ -167,6 +167,12 @@ public class BattleSystem : MonoBehaviour
         switch (uiController.skillHovered) {
             case (0):
                 fighter.fighterChop(uiController.enemyHovered);
+                break;
+            case (1):
+                fighter.fighterCleave();
+                break;
+            case (2):
+                fighter.fighterBreathe(uiController.allyHovered);
                 break;
         }
 

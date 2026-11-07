@@ -34,9 +34,9 @@ public class Character : MonoBehaviour
         }
     }
 
-    public int healHealth(int damage)
+    public int healHealth(int healAmount)
     {
-        int heal = damage + 2;
+        int heal = healAmount + 2;
         currentHealth += heal;
         if (currentHealth > maxHealth)
         {
@@ -83,28 +83,28 @@ public class Character : MonoBehaviour
 
      public void priestBlessing()
      {
-        int healthIncrease = healHealth(damage);
+
         for (int i = 0; i < characterManager.characters.Count; i++)
         {
             if (i == 0)
             {
-                healHealth(damage);
                 characterManager.characters[i].TryGetComponent<Character>(out Character priestScript);
+                priestScript.healHealth(damage);
             }
 
             if (i == 1)
             {
-                healHealth(damage);
                 characterManager.characters[i].TryGetComponent<Character>(out Character mcScript);
+                mcScript.healHealth(damage);
             }
 
             if (i == 2)
             {
-                healHealth(damage);
                 characterManager.characters[i].TryGetComponent<Character>(out Character fighterScript);
+                fighterScript.healHealth(damage);
             }
         }
-        Debug.Log($"All of your allies health were increased by {healthIncrease} !");
+        Debug.Log($"All of your allies health were healed by the Priest!");
      }
 
     public void priestBonk(int enemyIndex)
@@ -143,8 +143,9 @@ public class Character : MonoBehaviour
         enemyScript.takeDamage(damage);
     }
 
-     void fighterCleave()
+     public void fighterCleave()
      {
+
         for (int i = 0; i < enemyManager.enemies.Count; i++)
         {
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
@@ -160,13 +161,13 @@ public class Character : MonoBehaviour
         Debug.Log($"Fighter healed their health by {healthIncrease} !");
      }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             priestHeal(0);
         }
-    }
+    }*/
 
 
 }
