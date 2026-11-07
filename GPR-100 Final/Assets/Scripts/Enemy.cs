@@ -94,12 +94,20 @@ public class Enemy : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        healthBar.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            enemyManager.EnemyDies(gameObject);
+            enemyManager.EnemyDies(gameObject, gameObject);
         }
     }
 
+    public void GetHealthBarScript(GameObject healthBarObject)
+    {
+        healthBar = healthBarObject.GetComponent<HealthBar>();
+    }
 
+    private void Update()
+    {
+        healthBar.UpdateHealth(currentHealth);
+    }
 }

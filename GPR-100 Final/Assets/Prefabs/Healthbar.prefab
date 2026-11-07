@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4467503131791065150}
-  - component: {fileID: 1432486060458063581}
+  - component: {fileID: 8258195037984533467}
   m_Layer: 0
   m_Name: Health
   m_TagString: Untagged
@@ -213,7 +213,7 @@ Transform:
   - {fileID: 4724949250930854270}
   m_Father: {fileID: 4263196692530065042}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1432486060458063581
+--- !u!114 &8258195037984533467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,11 +222,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4360490586016589340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a3e87dc4c2685546be5c6bc6abf1153, type: 3}
+  m_Script: {fileID: 11500000, guid: ca269b2217fa62d459970392cb065e02, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthBarTest
-  maxHealth: 20
-  currentHealth: 20
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  healthBar: {fileID: 269744967128798243}
 --- !u!1 &8432711912910972985
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4263196692530065042}
+  - component: {fileID: 269744967128798243}
   m_Layer: 0
   m_Name: Healthbar
   m_TagString: Untagged
@@ -260,3 +260,20 @@ Transform:
   - {fileID: 2001908263247957476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269744967128798243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8432711912910972985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de531da9f713f2f4c99020f82f016925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
+  enemyManager: {fileID: 0}
+  enemy: {fileID: 2044675791855202382, guid: 6b42a60c778ea984f86cf9afe14cac1d, type: 3}
+  health: {fileID: 8258195037984533467}
+  maxValue: 0
+  value: 0
