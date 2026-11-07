@@ -99,6 +99,8 @@ Threat: Low
 
 Description: We plan to create our own assets for our game but this can be very time consuming, if we are not able to create our own we can use free assets. We will start working on these as soon as possible to lower the possibility of this happening.
 
+# Release Progress
+
 ## Proof of Concept Demonstration
 
 https://youtu.be/ZrkzudPfxlA
