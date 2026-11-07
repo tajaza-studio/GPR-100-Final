@@ -255,7 +255,9 @@ public class UIController : MonoBehaviour
     }
 
     public void SetHiddenStatus(bool isShown) {
-        skillHovered = 0;
+        if (isShown) {
+            skillHovered = 0;
+        }
         spriteRenderer.enabled = isShown;
     }
 }
