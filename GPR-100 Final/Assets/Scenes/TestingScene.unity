@@ -572,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: enemyManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 903374632322140038}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: currentHealth
       value: 1
@@ -744,7 +744,7 @@ PrefabInstance:
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: enemyManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 903374632322140038}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: currentHealth
       value: 1
@@ -861,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: enemyManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 903374632322140038}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: currentHealth
       value: 1
