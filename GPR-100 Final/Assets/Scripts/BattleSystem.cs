@@ -51,6 +51,8 @@ public class BattleSystem : MonoBehaviour
 
         // tolsta said to refactor this into https://gameprogrammingpatterns.com/state.html
         // case for each of the character's turns
+        uiController.UpdateGamePointers();
+
         switch (state) {
             case (State.PRIEST_TURN):
                 if (temp) { // replace this with checking if priest dead
@@ -61,12 +63,14 @@ public class BattleSystem : MonoBehaviour
                     priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
+                    Debug.Log(uiController.selectionState);
                     if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(priestSkillsInstance);
                         StartCoroutine(PriestAttack(2.0f));
+                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
-                        uiController.FindSkill();
+                        uiController.FindSkill((int)state);
                     }
                 }
                 break;
@@ -82,9 +86,9 @@ public class BattleSystem : MonoBehaviour
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(mcSkillsInstance);
                         StartCoroutine(MCAttack(2.0f));
+                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
-                        Debug.Log(state);
-                        uiController.FindSkill();
+                        uiController.FindSkill((int)state);
                     }
                 }
                 break;
@@ -101,8 +105,9 @@ public class BattleSystem : MonoBehaviour
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(fighterSkillsInstance);
                         StartCoroutine(FighterAttack(2.0f));
+                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
-                        uiController.FindSkill();
+                        uiController.FindSkill((int)state);
                     }
                 }
                 break;
@@ -112,6 +117,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PriestAttack(float seconds) {
         // sets the state to busy so the player cant act
         state = State.BUSY;
+        uiController.SetHiddenStatus(false);
 
         // this will be changed with what actually happens
         switch (uiController.skillHovered) {
@@ -122,6 +128,7 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.SetHiddenStatus(true);
         uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Your turn!");
@@ -130,6 +137,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator MCAttack(float seconds) {
         // sets the state to busy so the player cant act
         state = State.BUSY;
+        uiController.SetHiddenStatus(false);
 
         switch (uiController.skillHovered) {
             case (2):
@@ -139,6 +147,7 @@ public class BattleSystem : MonoBehaviour
 
         // waits
         yield return new WaitForSeconds(seconds);
+        uiController.SetHiddenStatus(true);
         uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Dracovich's turn!");
@@ -147,6 +156,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator FighterAttack(float seconds) {
         // sets the state to busy so the player cant act
         state = State.BUSY;
+        uiController.SetHiddenStatus(false);
 
         switch (uiController.skillHovered) {
             case (0):
@@ -168,7 +178,9 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         // when it's done waiting, the player can act again
+
         Debug.Log("It's Olive's turn!");
+        uiController.SetHiddenStatus(true);
         uiController.selectionState = SelectionState.SKILL;
         state = State.PRIEST_TURN;
     }

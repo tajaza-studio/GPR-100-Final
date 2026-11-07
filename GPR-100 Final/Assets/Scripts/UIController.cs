@@ -1,12 +1,11 @@
 //using UnityEditor.Experimental.GraphView;
 using NUnit.Framework;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] BattleSystem battleSystem;
-
     [SerializeField] EnemyManager enemyManager;
     
     private SpriteRenderer spriteRenderer;
@@ -63,13 +62,9 @@ public class UIController : MonoBehaviour
                 transform.position = new Vector3(3f, -4f, 0f);
                 break;
         }
-        if (battleSystem.state == BattleSystem.State.BUSY) {
-            skillHovered = 0;
-            spriteRenderer.enabled = false;
-            return;
-        }
-        spriteRenderer.enabled = true;
+    }
 
+    public void UpdateGamePointers() {
         switch (selectionState) {
             case (SelectionState.SKILL):
                 if (Input.GetKeyDown(KeyCode.W)) {
@@ -184,70 +179,83 @@ public class UIController : MonoBehaviour
                     Destroy(allyPointerInstance);
                 }
                 break;
-            case (SelectionState.BUSY):
-                // delete and reset everything
+        }
+    }
 
-                enemyPointerSpawned = false;
-                enemyHovered = 0;
-                
-                Destroy(enemyPointerInstance);
+    public void ResetGamePointers() {
+        enemyPointerSpawned = false;
+        enemyHovered = 0;
 
-                for (int i = 0; i < enemyManager.enemyCount; i++) {
-                    Destroy(allEnemyPointerInstance[0]);
-                    allEnemyPointerInstance.RemoveAt(0);
+        Destroy(enemyPointerInstance);
+        if (allEnemyPointerInstance.Count > 0) {
+            int allEnemyPointerCount = allEnemyPointerInstance.Count;
+            for (int i = 0; i < allEnemyPointerCount; i++) {
+                Destroy(allEnemyPointerInstance[0]);
+                allEnemyPointerInstance.RemoveAt(0);
+            }
+        }
+
+        allyPointerSpawned = false;
+        allyHovered = 0;
+
+        Destroy(allyPointerInstance);
+
+        if (allAllyPointerInstance.Count > 0) {
+            int allAllyPointerCount = allAllyPointerInstance.Count;
+            for (int i = 0; i < allAllyPointerCount; i++) {
+                Destroy(allAllyPointerInstance[0]);
+                allAllyPointerInstance.RemoveAt(0);
+            }
+        }
+        
+    }
+
+    public void FindSkill(int battleSystemState) {
+        switch (battleSystemState) {
+            case 0:
+                switch (skillHovered) {
+                    case (0):
+                        selectionState = SelectionState.ALLY;
+                        break;
+                    case (1):
+                        selectionState = SelectionState.ALL_ALLY;
+                        break;
+                    case (2):
+                        selectionState = SelectionState.ENEMY;
+                        break;
                 }
-
-                allyPointerSpawned = false;
-                allyHovered = 0;
-
-                Destroy(allyPointerInstance);
-                for (int i = 0; i < 3; i++) {
-                    Destroy(allAllyPointerInstance[0]);
-                    allAllyPointerInstance.RemoveAt(0);
+                break;
+            case 1:
+                switch (skillHovered) {
+                    case (0):
+                        selectionState = SelectionState.ALLY;
+                        break;
+                    case (1):
+                        selectionState = SelectionState.ENEMY;
+                        break;
+                    case (2):
+                        selectionState = SelectionState.ENEMY;
+                        break;
+                }
+                break;
+            case 2:
+                switch (skillHovered) {
+                    case (0):
+                        selectionState = SelectionState.ENEMY;
+                        break;
+                    case (1):
+                        selectionState = SelectionState.ALL_ENEMY;
+                        break;
+                    case (2):
+                        selectionState = SelectionState.FIGHTER;
+                        break;
                 }
                 break;
         }
     }
 
-    public void FindSkill() {
-        if (battleSystem.state == BattleSystem.State.PRIEST_TURN) {
-            switch (skillHovered) {
-                case (0):
-                    selectionState = SelectionState.ALLY;
-                    break;
-                case (1):
-                    selectionState = SelectionState.ALL_ALLY;
-                    break;
-                case (2):
-                    selectionState = SelectionState.ENEMY;
-                    break;
-            }
-        }
-        if (battleSystem.state == BattleSystem.State.MC_TURN) {
-            switch (skillHovered) {
-                case (0):
-                    selectionState = SelectionState.ALLY;
-                    break;
-                case (1):
-                    selectionState = SelectionState.ENEMY;
-                    break;
-                case (2):
-                    selectionState = SelectionState.ENEMY;
-                    break;
-            }
-        }
-        if (battleSystem.state == BattleSystem.State.FIGHTER_TURN) {
-            switch (skillHovered) {
-                case (0):
-                    selectionState = SelectionState.ENEMY;
-                    break;
-                case (1):
-                    selectionState = SelectionState.ALL_ENEMY;
-                    break;
-                case (2):
-                    selectionState = SelectionState.FIGHTER;
-                    break;
-            }
-        }
+    public void SetHiddenStatus(bool isShown) {
+        skillHovered = 0;
+        spriteRenderer.enabled = isShown;
     }
 }
