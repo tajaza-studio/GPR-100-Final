@@ -103,6 +103,10 @@ Description: We plan to create our own assets for our game but this can be very 
 
 https://youtu.be/ZrkzudPfxlA
 
+## Alpha Release Notes
+
+insert notes here :3
+
 # Team Agreement
 
 ## Part 1: Meeting Times
