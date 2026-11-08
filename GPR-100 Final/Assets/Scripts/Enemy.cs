@@ -114,6 +114,11 @@ public class Enemy : MonoBehaviour
         healthBarScript = healthBar.GetComponent<HealthBar>();
     }
 
+    public void debuffDamage()
+    {
+        damage -= 2;
+    }
+
     private void Update()
     {
         healthBarScript.UpdateHealth(currentHealth);

@@ -68,7 +68,6 @@ public class BattleSystem : MonoBehaviour
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(priestSkillsInstance);
                         StartCoroutine(PriestAttack(2.0f));
-                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
                         uiController.FindSkill((int)state);
                     }
@@ -86,7 +85,6 @@ public class BattleSystem : MonoBehaviour
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(mcSkillsInstance);
                         StartCoroutine(MCAttack(2.0f));
-                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
                         uiController.FindSkill((int)state);
                     }
@@ -105,7 +103,6 @@ public class BattleSystem : MonoBehaviour
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(fighterSkillsInstance);
                         StartCoroutine(FighterAttack(2.0f));
-                        uiController.ResetGamePointers();
                     } else if (uiController.selectionState == UIController.SelectionState.SKILL) {
                         uiController.FindSkill((int)state);
                     }
@@ -133,6 +130,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         // waits
+        uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
         uiController.enemyHovered = 0;
@@ -146,12 +144,20 @@ public class BattleSystem : MonoBehaviour
         uiController.SetHiddenStatus(false);
 
         switch (uiController.skillHovered) {
+            case (0):
+                Debug.Log(uiController.allyHovered);
+                mc.mcEnhance(uiController.allyHovered);
+                break;
+            case (1):
+                mc.mcSunder(uiController.enemyHovered);
+                break;
             case (2):
                 mc.mcSlash(uiController.enemyHovered);
                 break;
         }
 
         // waits
+        uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
         uiController.enemyHovered = 0;
@@ -177,6 +183,7 @@ public class BattleSystem : MonoBehaviour
         }
 
         // waits
+        uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.enemyHovered = 0;
         StartCoroutine(EnemyAttack(2.0f));

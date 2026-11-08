@@ -116,23 +116,43 @@ public class Character : MonoBehaviour
 
 
      //MC Skills
-     void mcEnhance()
+     public void mcEnhance(int characterIndex)
      {
-        //Character.buffDamage();
-        //Debug.Log("MC buffed your allies damage!");
+        if (characterIndex == 0)
+        {
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
+            priestScript.buffDamage();
+            Debug.Log("MC buffed the Priest's damage!");
+        }
+
+        if (characterIndex == 1)
+        {
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
+            mcScript.buffDamage();
+            Debug.Log("MC buffed their own damage!");
+        }
+
+        if (characterIndex == 2)
+        {
+            characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
+            fighterScript.buffDamage();
+            Debug.Log("MC buffed the Fighter's damage!");
+        }
      }
 
-     void mcSunder()
-     {
-
-     }
-
-     public void mcSlash(int enemyIndex)
+     public void mcSunder(int enemyIndex)
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
-        Debug.Log("The Enemy Was Slashed by the MC!");
-        enemyScript.takeDamage(damage);
+        enemyScript.debuffDamage();
+        Debug.Log("MC debuffed the enemies damage!");
      }
+
+    public void mcSlash(int enemyIndex)
+    {
+       enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
+       Debug.Log("The Enemy Was Slashed by the MC!");
+       enemyScript.takeDamage(damage);
+    }
 
 
     //Fighter Skills
