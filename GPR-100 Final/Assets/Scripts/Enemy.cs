@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         int character = Random.Range(0, 2);
         return character;
     }
-    void attack(int damage, bool aoe)
+    public void attack(int damage, bool aoe)
     {
         int attackRandom = getRandomCharacter();
         bool attacking = true;
