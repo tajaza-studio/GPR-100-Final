@@ -18,6 +18,13 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Character mc;
     [SerializeField] Character fighter;
 
+    [Header("Character Turn Indicator")]
+    [SerializeField] GameObject turnIndicator;
+    [SerializeField] GameObject turnIndicatorVisual;
+    [SerializeField] Transform priestPos;
+    [SerializeField] Transform mcPos;
+    [SerializeField] Transform fighterPos;
+
     GameObject priestSkillsInstance;
     GameObject mcSkillsInstance;
     GameObject fighterSkillsInstance;
@@ -59,6 +66,11 @@ public class BattleSystem : MonoBehaviour
                     state = State.MC_TURN;
                     break;
                 }
+
+                // update turn indicator
+                turnIndicator.transform.position = priestPos.position;
+                turnIndicatorVisual.GetComponent<Renderer>().enabled = true;
+
                 // show priest's skills
                 if (priestSkillsInstance == null) {
                     priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
@@ -78,6 +90,11 @@ public class BattleSystem : MonoBehaviour
                     state = State.FIGHTER_TURN;
                     break;
                 }
+
+                // update turn indicator
+                turnIndicator.transform.position = mcPos.position;
+                turnIndicatorVisual.GetComponent<Renderer>().enabled = true;
+
                 if (mcSkillsInstance == null) {
                     mcSkillsInstance = Instantiate(mcSkillsUI, mcSkillsUI.transform.position, Quaternion.identity);
                 }
@@ -97,6 +114,11 @@ public class BattleSystem : MonoBehaviour
                     StartCoroutine(EnemyTurn(2.0f));
                     break;
                 }
+
+                // update turn indicator
+                turnIndicator.transform.position = fighterPos.position;
+                turnIndicatorVisual.GetComponent<Renderer>().enabled = true;
+
                 if (fighterSkillsInstance == null) {
                     fighterSkillsInstance = Instantiate(fighterSkillsUI, fighterSkillsUI.transform.position, Quaternion.identity);
                 }
@@ -189,8 +211,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     IEnumerator EnemyTurn(float seconds) {
-        // this will be changed with what actually happens
-        bool aoe = false;
+        turnIndicatorVisual.GetComponent<Renderer>().enabled = false;
         for (int i = 0; i < enemyManager.enemies.Count; i++)
         {
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
