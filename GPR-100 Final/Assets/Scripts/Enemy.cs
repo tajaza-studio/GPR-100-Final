@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
 
     private int getRandomCharacter()
     {
-        int character = Random.Range(0, 2);
+        int character = Random.Range(0, 3);
         return character;
     }
     public void attackCharacter()
