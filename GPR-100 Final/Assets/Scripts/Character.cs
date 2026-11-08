@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -6,13 +7,8 @@ public class Character : MonoBehaviour
     [SerializeField] EnemyManager enemyManager;
     [SerializeField] CharacterManager characterManager;
 
-    [SerializeField] GameObject MC;
-    [SerializeField] GameObject Priest;
-    [SerializeField] GameObject Fighter;
-
-    Character mcScript;
-    Character priestScript;
-    Character fighterScript;
+    [SerializeField] GameObject healthBar;
+    HealthBar healthBarScript;
 
     public int damage;
     public bool aoe;
@@ -23,11 +19,13 @@ public class Character : MonoBehaviour
     void Start()
     {
         Debug.Log("The Fight is Starting!"); 
+        SetupHealthBar();
     }
 
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
+        healthBarScript.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
             isAlive = false;
@@ -42,6 +40,7 @@ public class Character : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        healthBarScript.UpdateHealth(currentHealth);
         return heal;
     }
 
@@ -54,7 +53,18 @@ public class Character : MonoBehaviour
     {
         damage -= 2;
     }
+
+    public void SetupHealthBar() {
+        Vector3 offset = new Vector3(3f, 0f, 0f);
+        GameObject healthBarObject = Instantiate(healthBar, transform.position + offset, Quaternion.identity);
+        healthBarScript = healthBarObject.GetComponent<HealthBar>();
+        healthBarScript.GetAllyScript(gameObject);
+        healthBarScript.UpdateHealth(currentHealth);
+    }
     
+    //
+    // SKILLS
+    //
 
     //Priest Skills
      public void priestHeal(int characterIndex)
