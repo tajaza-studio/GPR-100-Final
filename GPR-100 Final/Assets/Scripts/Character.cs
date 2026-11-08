@@ -61,22 +61,22 @@ public class Character : MonoBehaviour
      {
         if (characterIndex == 0)
         {
-            int healthIncrease = healHealth(damage);
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
+            int healthIncrease = priestScript.healHealth(damage);
             Debug.Log($"The Priest's health was increased by {healthIncrease} !");
         }
 
         if (characterIndex == 1)
         {
-            int healthIncrease = healHealth(damage);
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
+            int healthIncrease = mcScript.healHealth(damage);
             Debug.Log($"The MC's health was increased by {healthIncrease} !");
         }
 
         if (characterIndex == 2)
         {
-            int healthIncrease = healHealth(damage);
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
+            int healthIncrease = fighterScript.healHealth(damage);
             Debug.Log($"The Fighter's health was increased by {healthIncrease} !");
         }
      }

@@ -131,11 +131,6 @@ public class UIController : MonoBehaviour
                     Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * allyHovered), 0f);
                     allyPointerInstance.transform.position = allyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
-                    allyHovered = 0;
-                    allyPointerSpawned = false;
-                    Destroy(allyPointerInstance);
-                }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
                     allyHovered = 0;

@@ -63,7 +63,6 @@ public class BattleSystem : MonoBehaviour
                     priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
                 }
                 if (Input.GetKeyDown(KeyCode.Space)) {
-                    Debug.Log(uiController.selectionState);
                     if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(priestSkillsInstance);
@@ -133,7 +132,6 @@ public class BattleSystem : MonoBehaviour
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
-        uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Your turn!");
         state = State.MC_TURN;
@@ -160,7 +158,6 @@ public class BattleSystem : MonoBehaviour
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
-        uiController.enemyHovered = 0;
         uiController.selectionState = SelectionState.SKILL;
         Debug.Log("It's Dracovich's turn!");
         state = State.FIGHTER_TURN;
@@ -185,7 +182,6 @@ public class BattleSystem : MonoBehaviour
         // waits
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
-        uiController.enemyHovered = 0;
         StartCoroutine(EnemyAttack(2.0f));
     }
 
