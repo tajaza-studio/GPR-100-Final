@@ -107,13 +107,17 @@ https://youtu.be/ZrkzudPfxlA
 
 ## Alpha Release Notes
 
-insert notes here :3
+What the build contains: A fully functional fight between three player characters and three enemies. Each character has three different skills, including single-target skills and AOE skills. Each enemy has one single-target skill. If all enemies die, you win. If all characters die, you lose.
+
+What the build is missing: Art assets and successive fights. There are three further fights that need to be implemented, each with different enemies that have their own skills.
+
+Known bugs: TBD
 
 # Team Agreement
 
 ## Part 1: Meeting Times
 
-We will meet a minimum of one time per week until the project is due, excluding the week of Thanksgiving Break. The standard meeting time is Saturday from 11:00am to 3:00 pm. These will take place in booked study rooms (rooms TBD) and will serve as planning and group work sessions.
+We will meet a minimum of one time per week until the project is due, excluding the week of Thanksgiving Break. The standard meeting time is Saturday from 11:00am to 3:00 pm. These will take place in booked study rooms (typically MIC 309) and will serve as planning and group work sessions.
 
 Everyone will try to attend these meetings. If physical attendance is not possible, members will attempt to join the meetings regardless via Google Meet links.
 
