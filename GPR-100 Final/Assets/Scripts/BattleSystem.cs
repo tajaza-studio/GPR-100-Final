@@ -221,6 +221,7 @@ public class BattleSystem : MonoBehaviour
         }
         // when it's done waiting, the player can act again
 
+        yield return new WaitForSeconds(seconds * (enemyManager.enemies.Count - 1));
         Debug.Log("It's Olive's turn!");
         uiController.SetHiddenStatus(true);
         uiController.selectionState = SelectionState.SKILL;
