@@ -99,19 +99,25 @@ public class Character : MonoBehaviour
             if (i == 0)
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character priestScript);
-                priestScript.healHealth(damage);
+                if (priestScript.isAlive) {
+                    priestScript.healHealth(damage);
+                }
             }
 
             if (i == 1)
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character mcScript);
-                mcScript.healHealth(damage);
+                if (mcScript.isAlive) {
+                    mcScript.healHealth(damage);
+                }
             }
 
             if (i == 2)
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character fighterScript);
-                fighterScript.healHealth(damage);
+                if (fighterScript.isAlive) {
+                    fighterScript.healHealth(damage);
+                }
             }
         }
         Debug.Log($"All of your allies health were healed by the Priest!");
