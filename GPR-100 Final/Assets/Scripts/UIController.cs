@@ -7,6 +7,7 @@ using UnityEngine.InputSystem.XR;
 public class UIController : MonoBehaviour
 {
     [SerializeField] EnemyManager enemyManager;
+    [SerializeField] CharacterManager characterManager;
     
     private SpriteRenderer spriteRenderer;
 
@@ -122,18 +123,19 @@ public class UIController : MonoBehaviour
                     allyPointerSpawned = true;
                 }
                 if (Input.GetKeyDown(KeyCode.W)) {
-                    allyHovered = (allyHovered + 2) % 3;
+                    SetAllyHovered(true);
                     Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * allyHovered), 0f);
                     allyPointerInstance.transform.position = allyPointerPos;
                 }
                 if (Input.GetKeyDown(KeyCode.S)) {
-                    allyHovered = (allyHovered + 1) % 3;
+                    SetAllyHovered(false);
                     Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * allyHovered), 0f);
                     allyPointerInstance.transform.position = allyPointerPos;
                 }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
-                    allyHovered = 0;
+                    allyHovered = -1;
+                    SetAllyHovered(false);
                     allyPointerSpawned = false;
                     Destroy(allyPointerInstance);
                 }
@@ -142,8 +144,11 @@ public class UIController : MonoBehaviour
             case (SelectionState.ALL_ALLY):
                 if (!allyPointerSpawned) {
                     for (int i = 0; i < 3; i++) {
-                        Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * i), 0f);
-                        allAllyPointerInstance.Add(Instantiate(allyPointer, allyPointerPos, Quaternion.identity));
+                        Character characterScript = characterManager.characters[i].GetComponent<Character>();
+                        if (characterScript.isAlive) {
+                            Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * i), 0f);
+                            allAllyPointerInstance.Add(Instantiate(allyPointer, allyPointerPos, Quaternion.identity));
+                        }
                     }
                     allyPointerSpawned = true;
                 }
@@ -177,6 +182,22 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void SetAllyHovered(bool up) {
+        bool characterAliveCheck = true;
+
+        // gets set to false when the character is found alive
+        while (characterAliveCheck) {
+            // get the ally
+            allyHovered += 1;
+            if (up) {
+                allyHovered += 1;
+            }
+            allyHovered %= 3;
+            Character characterScript = characterManager.characters[allyHovered].GetComponent<Character>();
+            characterAliveCheck = !characterScript.isAlive;
+        }
+    }
+
     public void ResetGamePointers() {
         enemyPointerSpawned = false;
         enemyHovered = 0;
@@ -191,7 +212,8 @@ public class UIController : MonoBehaviour
         }
 
         allyPointerSpawned = false;
-        allyHovered = 0;
+        allyHovered = -1;
+        SetAllyHovered(false);
 
         Destroy(allyPointerInstance);
 

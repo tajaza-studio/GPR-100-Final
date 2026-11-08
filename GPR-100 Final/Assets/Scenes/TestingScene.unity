@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: enemyPointer
       value: 
       objectReference: {fileID: 1305239305544734595, guid: 0b4d10c08be980c4d9c64c95226ba4bf, type: 3}
+    - target: {fileID: 4708976802735378196, guid: 3f0e03d5a02c82944a4387c541c4c9be, type: 3}
+      propertyPath: characterManager
+      value: 
+      objectReference: {fileID: 903374632322140040}
     - target: {fileID: 5233930599982963920, guid: 3f0e03d5a02c82944a4387c541c4c9be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.56317
@@ -581,6 +585,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
+    - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: maxHealth
       value: 50
       objectReference: {fileID: 0}
@@ -780,6 +788,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
+    - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: maxHealth
       value: 50
       objectReference: {fileID: 0}
@@ -900,6 +912,10 @@ PrefabInstance:
       propertyPath: isAlive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: maxHealth
       value: 50
