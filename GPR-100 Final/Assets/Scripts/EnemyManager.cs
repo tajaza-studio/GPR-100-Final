@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -60,7 +61,10 @@ public class EnemyManager : MonoBehaviour
         Destroy(enemy);
         healthBars.Remove(healthBar);
         Destroy(healthBar);
-        Debug.Log(GetEnemyDistance());
         UpdateEnemies();
+
+        if (enemies.Count <= 0) {
+            SceneManager.LoadScene("Win");
+        }
     }
 }

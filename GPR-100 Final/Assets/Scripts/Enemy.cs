@@ -31,12 +31,6 @@ public class Enemy : MonoBehaviour
         battleSystem = GameObject.Find("BattleSystem");
         enemyManager = battleSystem.GetComponent<EnemyManager>();
         characterManager = battleSystem.GetComponent<CharacterManager>();
-
-
-        /* // get character scripts
-        mcScript = MC.GetComponent<Character>();
-        priestScript = Priest.GetComponent<Character>();
-        fighterScript = Fighter.GetComponent<Character>(); */
     }
 
     private int getRandomCharacter()
@@ -52,7 +46,6 @@ public class Enemy : MonoBehaviour
         characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
         characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
         characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
-        Debug.Log("Work Please");
 
         if (aoe) 
         {
