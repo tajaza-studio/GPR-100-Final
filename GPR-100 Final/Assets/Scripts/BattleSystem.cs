@@ -55,8 +55,9 @@ public class BattleSystem : MonoBehaviour
 
         switch (state) {
             case (State.PRIEST_TURN):
-                if (temp) { // replace this with checking if priest dead
+                if (!priest.isAlive) { // skips if the priest is dead
                     state = State.MC_TURN;
+                    break;
                 }
                 // show priest's skills
                 if (priestSkillsInstance == null) {
@@ -73,8 +74,9 @@ public class BattleSystem : MonoBehaviour
                 }
                 break;
             case (State.MC_TURN):
-                if (temp) { // replace this with checking if mc dead
+                if (!mc.isAlive) { // skips if the mc is dead
                     state = State.FIGHTER_TURN;
+                    break;
                 }
                 if (mcSkillsInstance == null) {
                     mcSkillsInstance = Instantiate(mcSkillsUI, mcSkillsUI.transform.position, Quaternion.identity);
@@ -90,9 +92,10 @@ public class BattleSystem : MonoBehaviour
                 }
                 break;
             case (State.FIGHTER_TURN):
-                if (temp) { // replace this with checking if fighter dead
+                if (!fighter.isAlive) { // skips if the fighter is dead
                     state = State.BUSY;
                     StartCoroutine(EnemyAttack(2.0f));
+                    break;
                 }
                 if (fighterSkillsInstance == null) {
                     fighterSkillsInstance = Instantiate(fighterSkillsUI, fighterSkillsUI.transform.position, Quaternion.identity);
