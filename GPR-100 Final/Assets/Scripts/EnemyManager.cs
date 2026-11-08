@@ -12,8 +12,7 @@ public class EnemyManager : MonoBehaviour
 
     [HideInInspector]
     public float enemyBoundSize = 8f;
-
-    bool setUpEnemies = true;
+    float healthBarOffset = -1.5f;
 
     void Start()
     {
@@ -30,10 +29,9 @@ public class EnemyManager : MonoBehaviour
 
     public void SetUpEnemies() {
         for (int i = 0; i < enemyCount; i++) {
-            float offset = -1.5f;
 
             Vector3 enemyPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
-            Vector3 healthBarPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), (2.5f + offset), 0f);
+            Vector3 healthBarPos = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), (2.5f + healthBarOffset), 0f);
 
             GameObject enemyInstance = Instantiate(enemyPrefab, enemyPos, Quaternion.identity);
             enemies.Add(enemyInstance);
@@ -45,23 +43,24 @@ public class EnemyManager : MonoBehaviour
             healthBarScript.GetEnemyScript(enemies[i]);
 
             enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
-            enemyScript.GetHealthBarScript(healthBars[i]);
+            enemyScript.GetHealthBar(healthBars[i]);
         }
-        setUpEnemies = false;
     }
 
     void UpdateEnemies() {
         for (int i = 0; i < enemies.Count; i++) {
             enemies[i].transform.position = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
-            healthBars[i].transform.position = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), 2.5f, 0f);
+            healthBars[i].transform.position = new Vector3(-enemyBoundSize + GetEnemyDistance() * (i + 1), (2.5f + healthBarOffset), 0f);
         }
     }
 
     public void EnemyDies(GameObject enemy, GameObject healthBar) {
+        enemyCount--;
         enemies.Remove(enemy);
         Destroy(enemy);
         healthBars.Remove(healthBar);
         Destroy(healthBar);
+        Debug.Log(GetEnemyDistance());
         UpdateEnemies();
     }
 }

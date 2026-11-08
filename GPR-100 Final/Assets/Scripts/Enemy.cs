@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] EnemyManager enemyManager;
+    GameObject battleSystem;
+    EnemyManager enemyManager;
 
     [SerializeField] GameObject MC;
     [SerializeField] GameObject Priest;
@@ -19,10 +20,16 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
     public bool isAlive;
 
-    public HealthBar healthBar;
+    public GameObject healthBar;
+    public HealthBar healthBarScript;
 
     void Start()
     {
+        // get enemy manager script
+        battleSystem = GameObject.Find("BattleSystem");
+        enemyManager = battleSystem.GetComponent<EnemyManager>();
+
+        // get character scripts
         mcScript = MC.GetComponent<Character>();
         priestScript = Priest.GetComponent<Character>();
         fighterScript = Fighter.GetComponent<Character>();
@@ -94,20 +101,21 @@ public class Enemy : MonoBehaviour
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.UpdateHealth(currentHealth);
+        healthBarScript.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
-            enemyManager.EnemyDies(gameObject, gameObject);
+            enemyManager.EnemyDies(gameObject, healthBar);
         }
     }
 
-    public void GetHealthBarScript(GameObject healthBarObject)
+    public void GetHealthBar(GameObject healthBarObject)
     {
-        healthBar = healthBarObject.GetComponent<HealthBar>();
+        healthBar = healthBarObject;
+        healthBarScript = healthBar.GetComponent<HealthBar>();
     }
 
     private void Update()
     {
-        healthBar.UpdateHealth(currentHealth);
+        healthBarScript.UpdateHealth(currentHealth);
     }
 }
