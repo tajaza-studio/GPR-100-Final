@@ -1,7 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class MainMenuController : MonoBehaviour
+public class SceneController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void GoToFirstFight()
@@ -18,5 +18,9 @@ public class MainMenuController : MonoBehaviour
     public void GoToCredits()
     {
         SceneManager.LoadScene("Credits");
+    }
+    public void GoToTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 }
