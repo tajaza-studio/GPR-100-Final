@@ -8,6 +8,8 @@ public class Character : MonoBehaviour
     [SerializeField] CharacterManager characterManager;
 
     [SerializeField] GameObject healthBar;
+
+    [SerializeField] GameObject deathMarker;
     HealthBar healthBarScript;
 
     public int damage;
@@ -28,7 +30,10 @@ public class Character : MonoBehaviour
         healthBarScript.UpdateHealth(currentHealth);
         if (currentHealth <= 0)
         {
+            currentHealth = 0;
             isAlive = false;
+            Instantiate(deathMarker, transform.position, Quaternion.identity);
+            characterManager.EveryoneDeadCheck();
         }
     }
 

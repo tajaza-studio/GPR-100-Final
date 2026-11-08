@@ -94,7 +94,7 @@ public class BattleSystem : MonoBehaviour
             case (State.FIGHTER_TURN):
                 if (!fighter.isAlive) { // skips if the fighter is dead
                     state = State.BUSY;
-                    StartCoroutine(EnemyAttack(2.0f));
+                    StartCoroutine(EnemyTurn(2.0f));
                     break;
                 }
                 if (fighterSkillsInstance == null) {
@@ -185,10 +185,10 @@ public class BattleSystem : MonoBehaviour
         // waits
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
-        StartCoroutine(EnemyAttack(2.0f));
+        StartCoroutine(EnemyTurn(2.0f));
     }
 
-    IEnumerator EnemyAttack(float seconds) {
+    IEnumerator EnemyTurn(float seconds) {
         // this will be changed with what actually happens
         bool aoe = false;
         for (int i = 0; i < enemyManager.enemies.Count; i++)
@@ -196,12 +196,8 @@ public class BattleSystem : MonoBehaviour
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
             enemyScript.attackCharacter();
             Debug.Log("The Enemy Attacked and did 4 damage!");
+            yield return new WaitForSeconds(seconds);
         }
-        Debug.Log("The Enemy Attacks!");
-
-        // waits
-        yield return new WaitForSeconds(seconds);
-
         // when it's done waiting, the player can act again
 
         Debug.Log("It's Olive's turn!");

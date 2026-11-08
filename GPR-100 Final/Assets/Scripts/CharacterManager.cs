@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -20,10 +21,17 @@ public class CharacterManager : MonoBehaviour
         characters.Add(Fighter);
     }
 
-    public void characterDies(GameObject character)
+    public void EveryoneDeadCheck()
     {
-        characters.Remove(character);
-        Destroy(character);
+        for (int i = 0; i < characters.Count; i++) {
+            Character characterScript = characters[i].GetComponent<Character>();
+            if (characterScript.isAlive) {
+                Debug.Log("found someone alive!");
+                return;
+            }
+        }
+        // load lose screen
+        SceneManager.LoadScene("Lose");
     }
 
 }
