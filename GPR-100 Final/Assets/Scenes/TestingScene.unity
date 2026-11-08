@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: deathMarker
@@ -739,7 +739,7 @@ PrefabInstance:
       objectReference: {fileID: 903374632322140038}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: currentHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: characterManager
@@ -958,7 +958,7 @@ PrefabInstance:
       objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: deathMarker
@@ -970,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 903374632322140038}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: currentHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: characterManager
@@ -1087,7 +1087,7 @@ PrefabInstance:
       objectReference: {fileID: 8432711912910972985, guid: b8781760f235b754087e14dfedf54a69, type: 3}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: maxHealth
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: deathMarker
@@ -1099,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 903374632322140038}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: currentHealth
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8053262646762839686, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
       propertyPath: characterManager

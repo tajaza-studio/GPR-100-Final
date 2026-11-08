@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
 
     public int healHealth(int healAmount)
     {
-        int heal = healAmount + 2;
+        int heal = healAmount + 3;
         currentHealth += heal;
         if (currentHealth > maxHealth)
         {
@@ -105,7 +105,7 @@ public class Character : MonoBehaviour
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character priestScript);
                 if (priestScript.isAlive) {
-                    priestScript.healHealth(damage);
+                    priestScript.healHealth((int)((float)damage * 0.4));
                 }
             }
 
@@ -113,7 +113,7 @@ public class Character : MonoBehaviour
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character mcScript);
                 if (mcScript.isAlive) {
-                    mcScript.healHealth(damage);
+                    mcScript.healHealth((int)((float)damage * 0.4));
                 }
             }
 
@@ -121,7 +121,7 @@ public class Character : MonoBehaviour
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character fighterScript);
                 if (fighterScript.isAlive) {
-                    fighterScript.healHealth(damage);
+                    fighterScript.healHealth((int)((float)damage * 0.4));
                 }
             }
         }
@@ -190,7 +190,7 @@ public class Character : MonoBehaviour
         for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
         {
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
-            enemyScript.takeDamage(damage);
+            enemyScript.takeDamage( (int)((float)damage * 0.6));
         }
         Debug.Log("All Enemies were Cleaved by the Fighter!");
      }

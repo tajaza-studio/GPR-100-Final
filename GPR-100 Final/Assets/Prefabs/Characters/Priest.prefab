@@ -104,8 +104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
   enemyManager: {fileID: 0}
-  damage: 2
+  characterManager: {fileID: 0}
+  healthBar: {fileID: 0}
+  deathMarker: {fileID: 0}
+  damage: 3
   aoe: 0
-  maxHealth: 0
-  currentHealth: 0
-  isAlive: 0
+  maxHealth: 20
+  currentHealth: 20
+  isAlive: 1
