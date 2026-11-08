@@ -187,7 +187,7 @@ public class Character : MonoBehaviour
      public void fighterCleave()
      {
 
-        for (int i = 0; i < enemyManager.enemies.Count; i++)
+        for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
         {
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
             enemyScript.takeDamage(damage);
