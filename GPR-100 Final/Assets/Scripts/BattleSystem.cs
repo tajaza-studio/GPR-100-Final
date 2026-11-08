@@ -187,6 +187,13 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyAttack(float seconds) {
         // this will be changed with what actually happens
+        bool aoe = false;
+        for (int i = 0; i < enemyManager.enemies.Count; i++)
+        {
+            enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
+            enemyScript.attackCharacter();
+            Debug.Log("The Enemy Attacked and did 4 damage!");
+        }
         Debug.Log("The Enemy Attacks!");
 
         // waits

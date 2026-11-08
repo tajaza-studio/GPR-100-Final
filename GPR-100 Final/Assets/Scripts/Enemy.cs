@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     GameObject battleSystem;
     EnemyManager enemyManager;
+    [SerializeField] CharacterManager characterManager;
+
 
     [SerializeField] GameObject MC;
     [SerializeField] GameObject Priest;
@@ -25,25 +27,33 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        // get enemy manager script
+        // get enemy manager and character manager script
         battleSystem = GameObject.Find("BattleSystem");
         enemyManager = battleSystem.GetComponent<EnemyManager>();
+        characterManager = battleSystem.GetComponent<CharacterManager>();
 
-        // get character scripts
+
+        /* // get character scripts
         mcScript = MC.GetComponent<Character>();
         priestScript = Priest.GetComponent<Character>();
-        fighterScript = Fighter.GetComponent<Character>();
+        fighterScript = Fighter.GetComponent<Character>(); */
     }
 
-    int getRandomCharacter()
+    private int getRandomCharacter()
     {
         int character = Random.Range(0, 2);
         return character;
     }
-    public void attack(int damage, bool aoe)
+    public void attackCharacter()
     {
+        bool aoe = false;
         int attackRandom = getRandomCharacter();
         bool attacking = true;
+        characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
+        characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
+        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+        Debug.Log("Work Please");
+
         if (aoe) 
         {
             if (mcScript.isAlive)
