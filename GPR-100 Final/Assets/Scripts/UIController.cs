@@ -174,7 +174,8 @@ public class UIController : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.C)) {
                     selectionState = SelectionState.SKILL;
-                    allyHovered = 0;
+                    allyHovered = -1;
+                    SetAllyHovered(false);
                     allyPointerSpawned = false;
                     Destroy(allyPointerInstance);
                 }
@@ -225,6 +226,11 @@ public class UIController : MonoBehaviour
             }
         }
         
+    }
+
+    public void ResetAllyPointer() {
+        allyHovered = -1;
+        SetAllyHovered(false);
     }
 
     public void FindSkill(int battleSystemState) {

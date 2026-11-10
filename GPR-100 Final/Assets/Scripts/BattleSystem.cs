@@ -219,10 +219,8 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("The Enemy Attacked and did 4 damage!");
             yield return new WaitForSeconds(seconds);
         }
-        Debug.Log("hi");
         // when it's done waiting, the player can act again
-        //yield return new WaitForSeconds(seconds * 2);
-        Debug.Log("It's Olive's turn!");
+        uiController.ResetAllyPointer();
         uiController.SetHiddenStatus(true);
         uiController.selectionState = SelectionState.SKILL;
         state = State.PRIEST_TURN;
