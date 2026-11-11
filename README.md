@@ -111,7 +111,7 @@ What the build contains: A fully functional fight between three player character
 
 What the build is missing: Art assets and successive fights. There are three further fights that need to be implemented, each with different enemies that have their own skills.
 
-Known bugs: TBD
+Known bugs: N/A
 
 # Team Agreement
 
