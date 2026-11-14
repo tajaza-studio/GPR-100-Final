@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     Character fighterScript;
 
     public int damage;
-    public bool aoe;
+    public bool aoe = false;
     public int maxHealth;
     public int currentHealth;
     public bool isAlive;
@@ -121,13 +121,11 @@ public class Enemy : MonoBehaviour
     public void buffDamage()
     {
         damage += 3;
-        buffed = true;
     }
 
     public void debuffDamage()
     {
         damage -= 3;
-        debuffed = true;
     }
 
     private void Update()

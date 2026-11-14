@@ -54,13 +54,11 @@ public class Character : MonoBehaviour
     public void buffDamage()
     {
         damage += 3;
-        buffed = true;
     }
     
     public void debuffDamage()
     {
         damage -= 3;
-        debuffed = true;
     }
 
     public void SetupHealthBar() {
@@ -148,6 +146,7 @@ public class Character : MonoBehaviour
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
             priestScript.buffDamage();
+            priestScript.buffed = true;
             Debug.Log("MC buffed the Priest's damage!");
         }
 
@@ -155,6 +154,7 @@ public class Character : MonoBehaviour
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
             mcScript.buffDamage();
+            mcScript.buffed = true;
             Debug.Log("MC buffed their own damage!");
         }
 
@@ -162,6 +162,7 @@ public class Character : MonoBehaviour
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
             fighterScript.buffDamage();
+            fighterScript.buffed = true;
             Debug.Log("MC buffed the Fighter's damage!");
         }
      }
@@ -170,6 +171,7 @@ public class Character : MonoBehaviour
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         enemyScript.debuffDamage();
+        enemyScript.debuffed = true;
         Debug.Log("MC debuffed the enemies damage!");
      }
 

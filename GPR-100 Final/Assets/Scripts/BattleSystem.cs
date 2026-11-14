@@ -6,6 +6,7 @@ using TMPro;
 
 public class BattleSystem : MonoBehaviour
 {
+    [SerializeField] CharacterManager characterManager;
     [Header("Skills UI")]
     [SerializeField] GameObject priestSkillsUI;
     [SerializeField] GameObject mcSkillsUI;
@@ -53,6 +54,8 @@ public class BattleSystem : MonoBehaviour
         // get enemy manager script
         enemyManager = GetComponent<EnemyManager>();
 
+        // get character manager script
+        characterManager = GetComponent<CharacterManager>();
         // it starts off as the priest's turn
         Debug.Log("It's Olive's turn!");
         state = State.PRIEST_TURN;
@@ -157,6 +160,19 @@ public class BattleSystem : MonoBehaviour
                 priest.priestBonk(uiController.enemyHovered);
                 break;
         }
+        // checks for buffs / debuffs to remove
+        characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
+        if (priestScript.buffed)
+        {
+            priestScript.buffed = false;
+            priestScript.debuffDamage();
+        }
+
+        if (priestScript.debuffed)
+        {
+            priestScript.debuffed = false;
+            priestScript.buffDamage();
+        }
 
         // waits
         uiController.ResetGamePointers();
@@ -183,6 +199,19 @@ public class BattleSystem : MonoBehaviour
                 mc.mcSlash(uiController.enemyHovered);
                 break;
         }
+        // checks for buffs / debuffs to remove
+        characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
+        if (mcScript.buffed)
+        {
+            mcScript.buffed = false;
+            mcScript.debuffDamage();
+        }
+
+        if (mcScript.debuffed)
+        {
+            mcScript.debuffed = false;
+            mcScript.buffDamage();
+        }
 
         // waits
         uiController.ResetGamePointers();
@@ -208,6 +237,19 @@ public class BattleSystem : MonoBehaviour
                 fighter.fighterBreathe(uiController.allyHovered);
                 break;
         }
+        // checks for buffs / debuffs to remove
+        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+        if (fighterScript.buffed)
+        {
+            fighterScript.buffed = false;
+            fighterScript.debuffDamage();
+        }
+
+        if (fighterScript.debuffed)
+        {
+            fighterScript.debuffed = false;
+            fighterScript.buffDamage();
+        }
 
         // waits
         uiController.ResetGamePointers();
@@ -221,7 +263,7 @@ public class BattleSystem : MonoBehaviour
         {
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
             enemyScript.attackCharacter();
-            Debug.Log("The Enemy Attacked and did 4 damage!");
+
             if (enemyScript.buffed)
             {
                 enemyScript.buffed = false;
