@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class UIController : MonoBehaviour
     List<GameObject> allAllyPointerInstance = new List<GameObject>();
 
     public SelectionState selectionState;
+    
+    [SerializeField] GameObject helpMenu;
+    public bool helpMenuOpen;
 
     public enum SelectionState {
         SKILL,
@@ -48,6 +52,9 @@ public class UIController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         selectionState = SelectionState.SKILL;
+
+        helpMenu.SetActive(false);
+        helpMenuOpen = false;
     }
 
     void Update()
@@ -62,6 +69,20 @@ public class UIController : MonoBehaviour
             case (2):
                 transform.position = new Vector3(3f, -4f, 0f);
                 break;
+        }
+
+        if(Input.GetButtonDown("HelpMenu"))
+        {
+            if(!helpMenuOpen)
+            {
+                helpMenu.SetActive(true);
+                helpMenuOpen = true;
+            }
+            else
+            {
+                helpMenu.SetActive(false);
+                helpMenuOpen = false;
+            }
         }
     }
 
