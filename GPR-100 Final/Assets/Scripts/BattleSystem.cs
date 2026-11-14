@@ -177,6 +177,7 @@ public class BattleSystem : MonoBehaviour
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
+        uiController.selectionState = SelectionState.SKILL;
         state = State.MC_TURN;
     }
     IEnumerator MCAttack(float seconds) {
