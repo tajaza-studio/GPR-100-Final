@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public bool isAlive;
+    public bool buffed = false;
+    public bool debuffed = false;
 
     public GameObject healthBar;
     public HealthBar healthBarScript;
@@ -117,9 +119,16 @@ public class Enemy : MonoBehaviour
         healthBarScript = healthBar.GetComponent<HealthBar>();
     }
 
+    public void buffDamage()
+    {
+        damage += 3;
+        buffed = true;
+    }
+
     public void debuffDamage()
     {
-        damage -= 2;
+        damage -= 3;
+        debuffed = true;
     }
 
     private void Update()

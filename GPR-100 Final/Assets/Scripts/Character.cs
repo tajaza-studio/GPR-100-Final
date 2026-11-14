@@ -17,6 +17,8 @@ public class Character : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public bool isAlive;
+    public bool buffed = false;
+    public bool debuffed = false;
 
     void Start()
     {
@@ -52,11 +54,13 @@ public class Character : MonoBehaviour
     public void buffDamage()
     {
         damage += 3;
+        buffed = true;
     }
     
     public void debuffDamage()
     {
-        damage -= 2;
+        damage -= 3;
+        debuffed = true;
     }
 
     public void SetupHealthBar() {

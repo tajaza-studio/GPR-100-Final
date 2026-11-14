@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using static UIController;
+using TMPro;
 //using UnityEditor.ShaderKeywordFilter;
 
 public class BattleSystem : MonoBehaviour
@@ -36,6 +37,9 @@ public class BattleSystem : MonoBehaviour
 
     bool temp = false;
 
+    public int turnCount = 1;
+    public TextMeshProUGUI turnCountLabel;
+
     // these are the states for turn based combat
     [HideInInspector]
     public enum State {
@@ -58,6 +62,7 @@ public class BattleSystem : MonoBehaviour
 
         // tolsta said to refactor this into https://gameprogrammingpatterns.com/state.html
         // case for each of the character's turns
+        turnCountLabel.text = "Turn " + turnCount;
         uiController.UpdateGamePointers();
 
         switch (state) {
@@ -217,9 +222,21 @@ public class BattleSystem : MonoBehaviour
             enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
             enemyScript.attackCharacter();
             Debug.Log("The Enemy Attacked and did 4 damage!");
+            if (enemyScript.buffed)
+            {
+                enemyScript.buffed = false;
+                enemyScript.debuffDamage();
+            }
+
+            if (enemyScript.debuffed)
+            {
+                enemyScript.debuffed = false;
+                enemyScript.buffDamage();
+            }
             yield return new WaitForSeconds(seconds);
         }
         // when it's done waiting, the player can act again
+        turnCount++;
         uiController.ResetAllyPointer();
         uiController.SetHiddenStatus(true);
         uiController.selectionState = SelectionState.SKILL;
