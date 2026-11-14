@@ -1084,6 +1084,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088970617763279257, guid: 076cbaf8b2ee23649bc8421a82413dae, type: 3}
       propertyPath: isAlive
       value: 1
       objectReference: {fileID: 0}
@@ -1317,6 +1321,10 @@ PrefabInstance:
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: aoe
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
+      propertyPath: damage
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 702757628999208062, guid: ca437c78ff1eb4749bf1d05e4d008d6e, type: 3}
       propertyPath: isAlive

@@ -41,7 +41,7 @@ public class Character : MonoBehaviour
 
     public int healHealth(int healAmount)
     {
-        int heal = healAmount + 3;
+        int heal = healAmount;
         currentHealth += heal;
         if (currentHealth > maxHealth)
         {
@@ -78,38 +78,39 @@ public class Character : MonoBehaviour
     //Priest Skills
      public void priestHeal(int characterIndex)
      {
+        int healAmount = (int)(damage * 1.3);
         if (characterIndex == 0)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
-            int healthIncrease = priestScript.healHealth(damage);
-            Debug.Log($"The Priest's health was increased by {healthIncrease} !");
+            priestScript.healHealth(healAmount);
+            Debug.Log($"The Priest's health was increased by {healAmount} !");
         }
 
         if (characterIndex == 1)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
-            int healthIncrease = mcScript.healHealth(damage);
-            Debug.Log($"The MC's health was increased by {healthIncrease} !");
+            mcScript.healHealth(healAmount);
+            Debug.Log($"The MC's health was increased by {healAmount} !");
         }
 
         if (characterIndex == 2)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
-            int healthIncrease = fighterScript.healHealth(damage);
-            Debug.Log($"The Fighter's health was increased by {healthIncrease} !");
+            fighterScript.healHealth(healAmount);
+            Debug.Log($"The Fighter's health was increased by {healAmount} !");
         }
      }
 
      public void priestBlessing()
      {
-
+        int healAmount = (int)(damage * 0.6);
         for (int i = 0; i < characterManager.characters.Count; i++)
         {
             if (i == 0)
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character priestScript);
                 if (priestScript.isAlive) {
-                    priestScript.healHealth((int)((float)damage * 0.4));
+                    priestScript.healHealth(healAmount);
                 }
             }
 
@@ -117,7 +118,7 @@ public class Character : MonoBehaviour
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character mcScript);
                 if (mcScript.isAlive) {
-                    mcScript.healHealth((int)((float)damage * 0.4));
+                    mcScript.healHealth(healAmount);
                 }
             }
 
@@ -125,7 +126,7 @@ public class Character : MonoBehaviour
             {
                 characterManager.characters[i].TryGetComponent<Character>(out Character fighterScript);
                 if (fighterScript.isAlive) {
-                    fighterScript.healHealth((int)((float)damage * 0.4));
+                    fighterScript.healHealth(healAmount);
                 }
             }
         }
@@ -136,7 +137,7 @@ public class Character : MonoBehaviour
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Bonked by the Priest!");
-        enemyScript.takeDamage(damage);
+        enemyScript.takeDamage((int)(damage * 0.6));
     }
 
 
@@ -176,7 +177,7 @@ public class Character : MonoBehaviour
     {
        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
        Debug.Log("The Enemy Was Slashed by the MC!");
-       enemyScript.takeDamage(damage);
+       enemyScript.takeDamage((int)(damage * 0.8));
     }
 
 

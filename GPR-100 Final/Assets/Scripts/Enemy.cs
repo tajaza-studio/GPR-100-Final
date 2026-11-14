@@ -42,7 +42,6 @@ public class Enemy : MonoBehaviour
     }
     public void attackCharacter()
     {
-        bool aoe = false;
         int attackRandom = getRandomCharacter();
         bool attacking = true;
         characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
