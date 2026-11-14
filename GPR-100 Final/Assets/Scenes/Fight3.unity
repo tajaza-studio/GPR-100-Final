@@ -1276,6 +1276,14 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 983306277957200071, guid: ee5e729a1aad2844ba3e67c4c78a0689, type: 3}
+    - target: {fileID: 4710049752372294043, guid: 469872945c8333140b0d8a23cb3a09f3, type: 3}
+      propertyPath: enemyBoundSize
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710049752372294043, guid: 469872945c8333140b0d8a23cb3a09f3, type: 3}
+      propertyPath: enemyHealthBar
+      value: 
+      objectReference: {fileID: 8432711912910972985, guid: 90f0231d14bff684aaf2a4a4a79751a9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -57,7 +57,6 @@ public class BattleSystem : MonoBehaviour
         // get character manager script
         characterManager = GetComponent<CharacterManager>();
         // it starts off as the priest's turn
-        Debug.Log("It's Olive's turn!");
         state = State.PRIEST_TURN;
     }
 
@@ -178,8 +177,6 @@ public class BattleSystem : MonoBehaviour
         uiController.ResetGamePointers();
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
-        uiController.selectionState = SelectionState.SKILL;
-        Debug.Log("It's Your turn!");
         state = State.MC_TURN;
     }
     IEnumerator MCAttack(float seconds) {
@@ -189,7 +186,6 @@ public class BattleSystem : MonoBehaviour
 
         switch (uiController.skillHovered) {
             case (0):
-                Debug.Log(uiController.allyHovered);
                 mc.mcEnhance(uiController.allyHovered);
                 break;
             case (1):
@@ -218,7 +214,6 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         uiController.SetHiddenStatus(true);
         uiController.selectionState = SelectionState.SKILL;
-        Debug.Log("It's Dracovich's turn!");
         state = State.FIGHTER_TURN;
     }
     IEnumerator FighterAttack(float seconds) {
