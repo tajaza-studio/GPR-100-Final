@@ -83,7 +83,7 @@ public class BattleSystem : MonoBehaviour
                 if (priestSkillsInstance == null) {
                     priestSkillsInstance = Instantiate(priestSkillsUI, priestSkillsUI.transform.position, Quaternion.identity);
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                if (Input.GetButtonDown("Select")) {
                     if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(priestSkillsInstance);
@@ -106,7 +106,7 @@ public class BattleSystem : MonoBehaviour
                 if (mcSkillsInstance == null) {
                     mcSkillsInstance = Instantiate(mcSkillsUI, mcSkillsUI.transform.position, Quaternion.identity);
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                if (Input.GetButtonDown("Select")) {
                     if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(mcSkillsInstance);
@@ -130,7 +130,7 @@ public class BattleSystem : MonoBehaviour
                 if (fighterSkillsInstance == null) {
                     fighterSkillsInstance = Instantiate(fighterSkillsUI, fighterSkillsUI.transform.position, Quaternion.identity);
                 }
-                if (Input.GetKeyDown(KeyCode.Space)) {
+                if (Input.GetButtonDown("Select")) {
                     if (uiController.selectionState != UIController.SelectionState.SKILL && uiController.selectionState != UIController.SelectionState.BUSY) {
                         uiController.selectionState = SelectionState.BUSY;
                         Destroy(fighterSkillsInstance);

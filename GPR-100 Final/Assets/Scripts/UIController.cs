@@ -68,10 +68,10 @@ public class UIController : MonoBehaviour
     public void UpdateGamePointers() {
         switch (selectionState) {
             case (SelectionState.SKILL):
-                if (Input.GetKeyDown(KeyCode.W)) {
+                if (Input.GetButtonDown("Up")) {
                     skillHovered = (skillHovered + 2) % 3;
                 }
-                if (Input.GetKeyDown(KeyCode.S)) {
+                if (Input.GetButtonDown("Down")) {
                     skillHovered = (skillHovered + 1) % 3;
                 }
                 break;
@@ -81,17 +81,17 @@ public class UIController : MonoBehaviour
                     enemyPointerInstance = Instantiate(enemyPointer, enemyPointerPos, Quaternion.identity);
                     enemyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.A)) {
+                if (Input.GetButtonDown("Left")) {
                     enemyHovered = (enemyHovered + enemyManager.enemyCount - 1) % enemyManager.enemyCount;
                     Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance.transform.position = enemyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.D)) {
+                if (Input.GetButtonDown("Right")) {
                     enemyHovered = (enemyHovered + 1) % enemyManager.enemyCount;
                     Vector3 enemyPointerPos = new Vector3(-enemyManager.enemyBoundSize + enemyManager.GetEnemyDistance() * (enemyHovered + 1), enemyPointerY, 0f);
                     enemyPointerInstance.transform.position = enemyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.C)) {
+                if (Input.GetButtonDown("Back")) {
                     selectionState = SelectionState.SKILL;
                     enemyHovered = 0;
                     enemyPointerSpawned = false;
@@ -107,7 +107,7 @@ public class UIController : MonoBehaviour
                     }
                     enemyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.C)) {
+                if (Input.GetButtonDown("Back")) {
                     selectionState = SelectionState.SKILL;
                     enemyPointerSpawned = false;
                     for (int i = 0; i < enemyManager.enemyCount; i++) {
@@ -122,17 +122,17 @@ public class UIController : MonoBehaviour
                     allyPointerInstance = Instantiate(allyPointer, allyPointerPos, Quaternion.identity);
                     allyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.W)) {
+                if (Input.GetButtonDown("Up")) {
                     SetAllyHovered(true);
                     Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * allyHovered), 0f);
                     allyPointerInstance.transform.position = allyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.S)) {
+                if (Input.GetButtonDown("Down")) {
                     SetAllyHovered(false);
                     Vector3 allyPointerPos = new Vector3(allyPointerX, allyPointerY - (allyPointerYSpacing * allyHovered), 0f);
                     allyPointerInstance.transform.position = allyPointerPos;
                 }
-                if (Input.GetKeyDown(KeyCode.C)) {
+                if (Input.GetButtonDown("Back")) {
                     selectionState = SelectionState.SKILL;
                     allyHovered = -1;
                     SetAllyHovered(false);
@@ -152,7 +152,7 @@ public class UIController : MonoBehaviour
                     }
                     allyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.C)) {
+                if (Input.GetButtonDown("Back")) {
                     selectionState = SelectionState.SKILL;
                     allyPointerSpawned = false;
                     for (int i = 0; i < 3; i++) {
@@ -172,7 +172,7 @@ public class UIController : MonoBehaviour
                     allyPointerInstance = (Instantiate(allyPointer, allyPointerPos, Quaternion.identity));
                     allyPointerSpawned = true;
                 }
-                if (Input.GetKeyDown(KeyCode.C)) {
+                if (Input.GetButtonDown("Back")) {
                     selectionState = SelectionState.SKILL;
                     allyHovered = -1;
                     SetAllyHovered(false);

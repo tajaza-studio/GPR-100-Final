@@ -11,8 +11,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> enemies;
     public List<GameObject> healthBars;
 
-    [HideInInspector]
-    public float enemyBoundSize = 8f;
+    public float enemyBoundSize = 9f;
     float healthBarOffset = -1.5f;
 
     void Start()
