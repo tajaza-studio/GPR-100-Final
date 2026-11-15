@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
     [SerializeField] GameObject healthBar;
 
     [SerializeField] GameObject deathMarker;
+
+    [SerializeField] GameObject buffMarker;
     HealthBar healthBarScript;
 
     public int damage;
@@ -191,31 +193,36 @@ public class Character : MonoBehaviour
         enemyScript.takeDamage(damage);
     }
 
-     public void fighterCleave()
-     {
-
-        for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
-        {
-            enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
-            enemyScript.takeDamage( (int)((float)damage * 0.6));
-        }
-        Debug.Log("All Enemies were Cleaved by the Fighter!");
-     }
-
-     public void fighterBreathe(int healAmount)
-     {
-        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
-        int healthIncrease = fighterScript.healHealth(healAmount);
-        Debug.Log($"Fighter healed their health by {healthIncrease} !");
-     }
-
-    /*void Update()
+    public void fighterCleave()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            priestHeal(0);
+
+       for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
+       {
+           enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
+           enemyScript.takeDamage( (int)((float)damage * 0.6));
+       }
+       Debug.Log("All Enemies were Cleaved by the Fighter!");
+    }
+
+    public void fighterBreathe(int healAmount)
+    {
+       characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+       int healthIncrease = fighterScript.healHealth(healAmount);
+       Debug.Log($"Fighter healed their health by {healthIncrease} !");
+    }
+
+    private void DisplayBuffMarker() {
+        if (buffed) {
+            buffMarker.SetActive(true);
+        } else {
+            buffMarker.SetActive(false);
         }
-    }*/
+    }
+
+    void Update()
+    {
+        DisplayBuffMarker();
+    }
 
 
 }
