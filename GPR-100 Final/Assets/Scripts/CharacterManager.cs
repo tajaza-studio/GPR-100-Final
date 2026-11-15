@@ -31,7 +31,7 @@ public class CharacterManager : MonoBehaviour
             }
         }
         // load lose screen
-        SceneManager.LoadScene("Lose");
+        GameInfo.loseFight();
     }
 
 }

@@ -63,7 +63,7 @@ public class EnemyManager : MonoBehaviour
         UpdateEnemies();
 
         if (enemies.Count <= 0) {
-            SceneManager.LoadScene("Win");
+            SceneManager.LoadScene("FightWin");
         }
     }
 }
