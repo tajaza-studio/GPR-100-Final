@@ -291,7 +291,7 @@ public class UIController : MonoBehaviour
                         selectionState = SelectionState.ALL_ENEMY;
                         break;
                     case (2):
-                        selectionState = SelectionState.FIGHTER;
+                        selectionState = SelectionState.ENEMY;
                         break;
                 }
                 break;

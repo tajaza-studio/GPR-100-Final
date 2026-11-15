@@ -245,35 +245,52 @@ public class Character : MonoBehaviour
     //Fighter Skills
     public void fighterChop(int enemyIndex)
     {
+        int attackDamage = damage;
+        if (buffed) {
+            attackDamage = damage + 3;
+        }
+        if (debuffed) {
+            attackDamage = damage - 3;
+        }
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
-        Debug.Log("The Enemy Was Chopped by the Fighter!");
-        enemyScript.takeDamage(damage);
+        enemyScript.takeDamage(attackDamage);
         debuffed = false;
         buffed = false;
     }
 
     public void fighterCleave()
     {
-
-       for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
-       {
-           enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
-           enemyScript.takeDamage( (int)((float)damage * 0.6));
-       }
-       debuffed = false;
-       buffed = false;
-       Debug.Log("All Enemies were Cleaved by the Fighter!");
+        int attackDamage = damage;
+        if (buffed) {
+            attackDamage = damage + 3;
+        }
+        if (debuffed) {
+            attackDamage = damage - 3;
+        }
+        for (int i = enemyManager.enemies.Count - 1; i >= 0; i--)
+        {
+            enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
+            enemyScript.takeDamage( (int)(attackDamage * 0.6));
+        }
+        debuffed = false;
+        buffed = false;
     }
 
-    public void fighterBreathe(int healAmount)
+    public void fighterLifesteal(int enemyIndex)
     {
-       characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
-       int healthIncrease = fighterScript.healHealth(healAmount);
-       Debug.Log($"Fighter healed their health by {healthIncrease} !");
-       debuffed = false;
-       buffed = false;
-
-
+        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
+        int attackDamage = damage;
+        if (buffed) {
+            attackDamage = damage + 3;
+        }
+        if (debuffed) {
+            attackDamage = damage - 3;
+        }
+        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
+        enemyScript.takeDamage((int)(attackDamage * 0.7));
+        healHealth((int)(attackDamage * 0.7));
+        debuffed = false;
+        buffed = false;
     }
 
     private void DisplayBuffMarker() {
