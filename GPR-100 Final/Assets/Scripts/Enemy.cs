@@ -1,16 +1,16 @@
 using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
     GameObject battleSystem;
     EnemyManager enemyManager;
     [SerializeField] CharacterManager characterManager;
 
-
     [SerializeField] GameObject MC;
     [SerializeField] GameObject Priest;
     [SerializeField] GameObject Fighter;
+
+    [SerializeField] GameObject debuffMarker;
 
     Character mcScript;
     Character priestScript;
@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
         enemyManager = battleSystem.GetComponent<EnemyManager>();
         characterManager = battleSystem.GetComponent<CharacterManager>();
     }
-
     private int getRandomCharacter()
     {
         int character = Random.Range(0, 3);
@@ -130,6 +129,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        DisplayDebuffIcon();
         healthBarScript.UpdateHealth(currentHealth);
+    }
+
+    private void DisplayDebuffIcon() {
+        if (debuffed) {
+            debuffMarker.SetActive(true);
+        } else {
+            debuffMarker.SetActive(false);
+        }
     }
 }
