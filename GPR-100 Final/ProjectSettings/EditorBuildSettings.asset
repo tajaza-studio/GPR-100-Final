@@ -14,18 +14,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 480c2748b4a8a274a928c2dfab75bfad
-  - enabled: 0
-    path: Assets/Scenes/Fight1.unity
-    guid: 6efd9483be0f4324f91a1e6bb38685e7
-  - enabled: 1
-    path: Assets/Scenes/TestingScene.unity
-    guid: fa3b74e3861ac974ba258142d73e85eb
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 55ab8cc2f633ad94188508a7acb98d5f
   - enabled: 1
+    path: Assets/Scenes/Fight1.unity
+    guid: b580193d70e7af049939819b7b42c0e6
+  - enabled: 1
+    path: Assets/Scenes/Fight2.unity
+    guid: cfd853a75570e2c4ab48562f47528f61
+  - enabled: 1
+    path: Assets/Scenes/Fight3.unity
+    guid: c1123ae87555cac4eb2e2dd1f7a9ca28
+  - enabled: 1
+    path: Assets/Scenes/Fight4.unity
+    guid: 2db559073bcfea94092d0b90a9eb9ec6
+  - enabled: 1
+    path: Assets/Scenes/FightWin.unity
+    guid: 59ecfc614e56ba8439617a0f5d5c8db7
+  - enabled: 0
+    path: Assets/Scenes/TestingScene.unity
+    guid: fa3b74e3861ac974ba258142d73e85eb
+  - enabled: 1
     path: Assets/Scenes/Lose.unity
-    guid: 49ac5e9a9ac761742a4e56259164f431
+    guid: a08b865078c04e94c98854842a624bf9
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: d3d75a2279ee3414184fc17aa6dcad53
