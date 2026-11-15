@@ -172,7 +172,6 @@ public class Character : MonoBehaviour
      public void mcSunder(int enemyIndex)
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
-        enemyScript.debuffDamage();
         enemyScript.debuffed = true;
         Debug.Log("MC debuffed the enemies damage!");
      }

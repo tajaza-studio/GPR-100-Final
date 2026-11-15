@@ -47,57 +47,65 @@ public class Enemy : MonoBehaviour {
         characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
         characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
 
+        int attackDamage = damage;
+        if (buffed) {
+            attackDamage = damage + 3;
+        }
+        if (buffed) {
+            attackDamage = damage - 3;
+        }
+
         if (aoe) 
         {
             if (mcScript.isAlive)
             {
-                mcScript.takeDamage(damage);
+                mcScript.takeDamage(attackDamage);
             }
 
             if(priestScript.isAlive)
             {
-                priestScript.takeDamage(damage);
+                priestScript.takeDamage(attackDamage);
             }
 
             if (fighterScript.isAlive)
             {
-                fighterScript.takeDamage(damage);
+                fighterScript.takeDamage(attackDamage);
             }
+            debuffed = false;
+            buffed = false;
             return;
         }
         while (attacking)
         {
-
-
             switch (attackRandom % 3)
             {
                 case (0):
                     if (priestScript.isAlive)
                     {
-                        priestScript.takeDamage(damage);
+                        priestScript.takeDamage(attackDamage);
                         attacking = false;
                     }
                     break;
                 case (1):
                     if (mcScript.isAlive)
                     { 
-                        mcScript.takeDamage(damage);
+                        mcScript.takeDamage(attackDamage);
                         attacking = false;
                     }
                     break;
                 case (2):
                     if (fighterScript.isAlive)
                     {
-                        fighterScript.takeDamage(damage);
+                        fighterScript.takeDamage(attackDamage);
                         attacking = false;
                     }
                     break;
 
             }
             attackRandom++;
-
-         
         }
+        debuffed = false;
+        buffed = false;
     }
 
 
@@ -111,20 +119,9 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void GetHealthBar(GameObject healthBarObject)
-    {
+    public void GetHealthBar(GameObject healthBarObject) {
         healthBar = healthBarObject;
         healthBarScript = healthBar.GetComponent<HealthBar>();
-    }
-
-    public void buffDamage()
-    {
-        damage += 3;
-    }
-
-    public void debuffDamage()
-    {
-        damage -= 3;
     }
 
     private void Update()
