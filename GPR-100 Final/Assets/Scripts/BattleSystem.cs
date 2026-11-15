@@ -160,7 +160,7 @@ public class BattleSystem : MonoBehaviour
                 break;
         }
         // checks for buffs / debuffs to remove
-        characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
+        /*characterManager.characters[0].TryGetComponent<Character>(out Character priestScript);
         if (priestScript.buffed)
         {
             priestScript.buffed = false;
@@ -171,7 +171,7 @@ public class BattleSystem : MonoBehaviour
         {
             priestScript.debuffed = false;
             priestScript.buffDamage();
-        }
+        } */
 
         // waits
         uiController.ResetGamePointers();
@@ -197,7 +197,7 @@ public class BattleSystem : MonoBehaviour
                 break;
         }
         // checks for buffs / debuffs to remove
-        characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
+       /* characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
         if (mcScript.buffed)
         {
             mcScript.buffed = false;
@@ -208,7 +208,7 @@ public class BattleSystem : MonoBehaviour
         {
             mcScript.debuffed = false;
             mcScript.buffDamage();
-        }
+        } */
 
         // waits
         uiController.ResetGamePointers();
@@ -234,18 +234,18 @@ public class BattleSystem : MonoBehaviour
                 break;
         }
         // checks for buffs / debuffs to remove
-        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
-        if (fighterScript.buffed)
-        {
-            fighterScript.buffed = false;
-            fighterScript.debuffDamage();
-        }
+        /* characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
+         if (mcScript.buffed)
+         {
+             mcScript.buffed = false;
+             mcScript.debuffDamage();
+         }
 
-        if (fighterScript.debuffed)
-        {
-            fighterScript.debuffed = false;
-            fighterScript.buffDamage();
-        }
+         if (mcScript.debuffed)
+         {
+             mcScript.debuffed = false;
+             mcScript.buffDamage();
+         } */
 
         // waits
         uiController.ResetGamePointers();
@@ -263,13 +263,11 @@ public class BattleSystem : MonoBehaviour
             if (enemyScript.buffed)
             {
                 enemyScript.buffed = false;
-                enemyScript.debuffDamage();
             }
 
             if (enemyScript.debuffed)
             {
                 enemyScript.debuffed = false;
-                enemyScript.buffDamage();
             }
             yield return new WaitForSeconds(seconds);
         }

@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
         return heal;
     }
 
-    public void buffDamage()
+   /* public void buffDamage()
     {
         damage += 3;
     }
@@ -61,7 +61,7 @@ public class Character : MonoBehaviour
     public void debuffDamage()
     {
         damage -= 3;
-    }
+    } */
 
     public void SetupHealthBar() {
         Vector3 offset = new Vector3(3f, 0f, 0f);
@@ -78,7 +78,16 @@ public class Character : MonoBehaviour
     //Priest Skills
      public void priestHeal(int characterIndex)
      {
-        int healAmount = (int)(damage * 1.3);
+        int attackDamage = damage;
+        if (buffed)
+        {
+            attackDamage = damage + 3;
+        }
+        if (debuffed)
+        {
+            attackDamage = damage - 3;
+        }
+        int healAmount = (int)(attackDamage * 1.3);
         if (characterIndex == 0)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
@@ -99,11 +108,23 @@ public class Character : MonoBehaviour
             fighterScript.healHealth(healAmount);
             Debug.Log($"The Fighter's health was increased by {healAmount} !");
         }
-     }
+        debuffed = false;
+        buffed = false;
+    }
 
      public void priestBlessing()
      {
-        int healAmount = (int)(damage * 0.6);
+        int attackDamage = damage;
+        if (buffed)
+        {
+            attackDamage = damage + 3;
+        }
+        if (debuffed)
+        {
+            attackDamage = damage - 3;
+        } 
+
+        int healAmount = (int)(attackDamage * 0.6);
         for (int i = 0; i < characterManager.characters.Count; i++)
         {
             if (i == 0)
@@ -130,24 +151,37 @@ public class Character : MonoBehaviour
                 }
             }
         }
+        debuffed = false;
+        buffed = false;
         Debug.Log($"All of your allies health were healed by the Priest!");
      }
 
     public void priestBonk(int enemyIndex)
-     {
+    {
+        int attackDamage = damage;
+        if (buffed)
+        {
+            attackDamage = damage + 3;
+        }
+        if (debuffed)
+        {
+            attackDamage = damage - 3;
+        }
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Bonked by the Priest!");
-        enemyScript.takeDamage((int)(damage * 0.6));
+        enemyScript.takeDamage((int)(attackDamage * 0.6));
+        debuffed = false;
+        buffed = false;
     }
 
 
      //MC Skills
      public void mcEnhance(int characterIndex)
      {
+        
         if (characterIndex == 0)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
-            priestScript.buffDamage();
             priestScript.buffed = true;
             Debug.Log("MC buffed the Priest's damage!");
         }
@@ -155,7 +189,6 @@ public class Character : MonoBehaviour
         if (characterIndex == 1)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
-            mcScript.buffDamage();
             mcScript.buffed = true;
             Debug.Log("MC buffed their own damage!");
         }
@@ -163,24 +196,37 @@ public class Character : MonoBehaviour
         if (characterIndex == 2)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
-            fighterScript.buffDamage();
             fighterScript.buffed = true;
             Debug.Log("MC buffed the Fighter's damage!");
         }
-     }
+        
+    }
 
      public void mcSunder(int enemyIndex)
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         enemyScript.debuffed = true;
         Debug.Log("MC debuffed the enemies damage!");
-     }
+        debuffed = false;
+        buffed = false;
+    }
 
     public void mcSlash(int enemyIndex)
     {
+       int attackDamage = damage;
+       if (buffed)
+       {
+           attackDamage = damage + 3;
+       }
+       if (debuffed)
+       {
+           attackDamage = damage - 3;
+       }
        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
        Debug.Log("The Enemy Was Slashed by the MC!");
-       enemyScript.takeDamage((int)(damage * 0.8));
+       enemyScript.takeDamage((int)(attackDamage * 0.8));
+       debuffed = false;
+       buffed = false;
     }
 
 
@@ -190,6 +236,8 @@ public class Character : MonoBehaviour
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         Debug.Log("The Enemy Was Chopped by the Fighter!");
         enemyScript.takeDamage(damage);
+        debuffed = false;
+        buffed = false;
     }
 
     public void fighterCleave()
@@ -200,6 +248,8 @@ public class Character : MonoBehaviour
            enemyManager.enemies[i].TryGetComponent<Enemy>(out Enemy enemyScript);
            enemyScript.takeDamage( (int)((float)damage * 0.6));
        }
+       debuffed = false;
+       buffed = false;
        Debug.Log("All Enemies were Cleaved by the Fighter!");
     }
 
@@ -208,6 +258,10 @@ public class Character : MonoBehaviour
        characterManager.characters[2].TryGetComponent<Character>(out Character fighterScript);
        int healthIncrease = fighterScript.healHealth(healAmount);
        Debug.Log($"Fighter healed their health by {healthIncrease} !");
+       debuffed = false;
+       buffed = false;
+
+
     }
 
     private void DisplayBuffMarker() {

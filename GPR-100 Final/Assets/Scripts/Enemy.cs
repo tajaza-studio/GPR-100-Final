@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour {
         if (buffed) {
             attackDamage = damage + 3;
         }
-        if (buffed) {
+        if (debuffed) {
             attackDamage = damage - 3;
         }
 
