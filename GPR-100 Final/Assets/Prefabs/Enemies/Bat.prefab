@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9190317987462533281}
-  - component: {fileID: 4731990342631287303}
   - component: {fileID: 2044675791855202382}
   m_Layer: 0
   m_Name: Bat
@@ -31,16 +30,75 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2388200809788995480}
   - {fileID: 815619650906107811}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4731990342631287303
-SpriteRenderer:
+--- !u!114 &2044675791855202382
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983306277957200071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  characterManager: {fileID: 0}
+  MC: {fileID: 4884220508394041144, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
+  Priest: {fileID: 6946541525608305642, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
+  Fighter: {fileID: 8510074875564960125, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
+  debuffMarker: {fileID: 6987292586495532000}
+  damage: 5
+  aoe: 0
+  maxHealth: 10
+  currentHealth: 10
+  isAlive: 0
+  buffed: 0
+  debuffed: 0
+  healthBar: {fileID: 0}
+  healthBarScript: {fileID: 0}
+--- !u!1 &5353217245662952553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2388200809788995480}
+  - component: {fileID: 3351676935163880103}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2388200809788995480
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353217245662952553}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9190317987462533281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3351676935163880103
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5353217245662952553}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -81,43 +139,17 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.2679245, g: 0.1976575, b: 0.1976575, a: 1}
+  m_Sprite: {fileID: -697763020151794088, guid: 266c218dc9ad14a4ca6e3f35aae72cd5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.79, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2044675791855202382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983306277957200071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f99035a12e9a764a973e2a5ac267f6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  characterManager: {fileID: 0}
-  MC: {fileID: 4884220508394041144, guid: f7e891d3c95db1844bcef32016b85aa4, type: 3}
-  Priest: {fileID: 6946541525608305642, guid: a140ba6d1a747ec4f954ef7c720a369f, type: 3}
-  Fighter: {fileID: 8510074875564960125, guid: db86c70dfdd74e2449698cd8987c861f, type: 3}
-  debuffMarker: {fileID: 6987292586495532000}
-  damage: 5
-  aoe: 0
-  maxHealth: 10
-  currentHealth: 10
-  isAlive: 0
-  buffed: 0
-  debuffed: 0
-  healthBar: {fileID: 0}
-  healthBarScript: {fileID: 0}
 --- !u!1001 &4708375997427704359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5333997839761624452, guid: b1b746cc2dfb2a749b913532f1cd22f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5333997839761624452, guid: b1b746cc2dfb2a749b913532f1cd22f1, type: 3}
       propertyPath: m_LocalRotation.w

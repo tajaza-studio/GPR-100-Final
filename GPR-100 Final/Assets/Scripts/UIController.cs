@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject enemyPointer;
     public int enemyHovered = 0;
     bool enemyPointerSpawned = false;
-    float enemyPointerY = 1.5f;
+    float enemyPointerY = 0.2f;
     GameObject enemyPointerInstance = null;
     List<GameObject> allEnemyPointerInstance = new List<GameObject>();
 
