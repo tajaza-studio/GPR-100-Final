@@ -22,10 +22,18 @@ public class Character : MonoBehaviour
     public bool buffed = false;
     public bool debuffed = false;
 
+    [SerializeField] AudioClip priestBonkSound;
+
+    private AudioSource audioSource;
+
     void Start()
     {
         Debug.Log("The Fight is Starting!"); 
         SetupHealthBar();
+
+        if (gameObject.name == "Priest") {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     public void takeDamage(int damage)
@@ -172,6 +180,10 @@ public class Character : MonoBehaviour
         enemyScript.takeDamage((int)(attackDamage * 0.6));
         debuffed = false;
         buffed = false;
+
+        // play sound
+        audioSource.clip = priestBonkSound;
+        audioSource.Play();
     }
 
 
