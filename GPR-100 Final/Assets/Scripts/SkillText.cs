@@ -26,7 +26,7 @@ public class SkillText : MonoBehaviour
             case BattleSystem.State.MC_TURN:
                 switch (uiController.skillHovered) {
                     case 0:
-                        text.text = "MC buffs one ally's next skill.";
+                        text.text = "MC buffs one ally's next healing or damaging skill.";
                         break;
                     case 1:
                         text.text = "MC debuffs one enemy's next attack.";
@@ -45,7 +45,7 @@ public class SkillText : MonoBehaviour
                         text.text = "Dracovich cleaves all enemies with his axe for medium damage.";
                         break;
                     case 2:
-                        text.text = "Dracovich takes a deep breath and heals himself.";
+                        text.text = "Dracovich deals damage to one enemy and heals himself for the same amount";
                         break;
                 }
                 break;

@@ -230,22 +230,9 @@ public class BattleSystem : MonoBehaviour
                 fighter.fighterCleave();
                 break;
             case (2):
-                fighter.fighterBreathe(uiController.allyHovered);
+                fighter.fighterLifesteal(uiController.enemyHovered);
                 break;
         }
-        // checks for buffs / debuffs to remove
-        /* characterManager.characters[1].TryGetComponent<Character>(out Character mcScript);
-         if (mcScript.buffed)
-         {
-             mcScript.buffed = false;
-             mcScript.debuffDamage();
-         }
-
-         if (mcScript.debuffed)
-         {
-             mcScript.debuffed = false;
-             mcScript.buffDamage();
-         } */
 
         // waits
         uiController.ResetGamePointers();
