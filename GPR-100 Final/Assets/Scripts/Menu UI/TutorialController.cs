@@ -5,7 +5,7 @@ public class TutorialController : MonoBehaviour
 {
     public void Update() {
         if (Input.GetButtonDown("Select")) {
-            SceneManager.LoadScene("TestingScene");
+            GameInfo.loadFight();
             //SceneManager.LoadScene("Fight1");
         }
     }
