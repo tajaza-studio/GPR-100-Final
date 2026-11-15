@@ -161,7 +161,6 @@ public class Character : MonoBehaviour
         }
         debuffed = false;
         buffed = false;
-        Debug.Log($"All of your allies health were healed by the Priest!");
      }
 
     public void priestBonk(int enemyIndex)
@@ -176,7 +175,6 @@ public class Character : MonoBehaviour
             attackDamage = damage - 3;
         }
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
-        Debug.Log("The Enemy Was Bonked by the Priest!");
         enemyScript.takeDamage((int)(attackDamage * 0.6));
         debuffed = false;
         buffed = false;
@@ -195,21 +193,18 @@ public class Character : MonoBehaviour
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character priestScript);
             priestScript.buffed = true;
-            Debug.Log("MC buffed the Priest's damage!");
         }
 
         if (characterIndex == 1)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character mcScript);
             mcScript.buffed = true;
-            Debug.Log("MC buffed their own damage!");
         }
 
         if (characterIndex == 2)
         {
             characterManager.characters[characterIndex].TryGetComponent<Character>(out Character fighterScript);
             fighterScript.buffed = true;
-            Debug.Log("MC buffed the Fighter's damage!");
         }
         
     }
@@ -218,7 +213,6 @@ public class Character : MonoBehaviour
      {
         enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
         enemyScript.debuffed = true;
-        Debug.Log("MC debuffed the enemies damage!");
         debuffed = false;
         buffed = false;
     }
@@ -235,7 +229,6 @@ public class Character : MonoBehaviour
            attackDamage = damage - 3;
        }
        enemyManager.enemies[enemyIndex].TryGetComponent<Enemy>(out Enemy enemyScript);
-       Debug.Log("The Enemy Was Slashed by the MC!");
        enemyScript.takeDamage((int)(attackDamage * 0.8));
        debuffed = false;
        buffed = false;
