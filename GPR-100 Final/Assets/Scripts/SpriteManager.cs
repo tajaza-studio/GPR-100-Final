@@ -6,14 +6,26 @@ public class SpriteManager : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
 
-    [SerializeField] Sprite PriestAlive, PriestHurt, PriestDead;
+    public Sprite PriestAlive, PriestHurt, PriestDead;
 
-    void Start()
+    private void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    void ChangePriestSprite()
+    public void ChangePriestSprite(int currentHealth, int maxHealth)
     {
-        
+        if(currentHealth >= (maxHealth / 2))
+        {
+            spriteRenderer.sprite = PriestAlive;
+        }
+        else if (currentHealth > 0)
+        {
+            spriteRenderer.sprite = PriestHurt;
+        }
+        else
+        {
+            spriteRenderer.sprite = PriestDead;
+        }
     }
 }

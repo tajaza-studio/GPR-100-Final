@@ -118,6 +118,7 @@ MonoBehaviour:
   isAlive: 1
   buffed: 0
   debuffed: 0
+  priestBonkSound: {fileID: 0}
 --- !u!114 &-3693050604724092068
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,6 +26,8 @@ public class Character : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [SerializeField] SpriteManager spriteManager;
+
     void Start()
     {
         Debug.Log("The Fight is Starting!"); 
@@ -34,12 +36,18 @@ public class Character : MonoBehaviour
         if (gameObject.name == "Priest") {
             audioSource = GetComponent<AudioSource>();
         }
+
+        spriteManager = GameObject.FindFirstObjectByType<SpriteManager>();
     }
 
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
         healthBarScript.UpdateHealth(currentHealth);
+        if (gameObject.name == "Priest")
+        {
+            spriteManager.ChangePriestSprite(currentHealth, maxHealth);
+        }
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -58,6 +66,10 @@ public class Character : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthBarScript.UpdateHealth(currentHealth);
+        if (gameObject.name == "Priest")
+        {
+            spriteManager.ChangePriestSprite(currentHealth, maxHealth);
+        }
         return heal;
     }
 
