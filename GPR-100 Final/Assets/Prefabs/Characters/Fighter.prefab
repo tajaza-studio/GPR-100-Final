@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2969923802742329005}
   - component: {fileID: 3281225870863851823}
   - component: {fileID: 8053262646762839686}
+  - component: {fileID: -877643562712888936}
   m_Layer: 0
   m_Name: Fighter
   m_TagString: Untagged
@@ -114,8 +115,26 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 20
   isAlive: 1
-  buffed: 0
+  buffed: 1
   debuffed: 0
+  priestBonkSound: {fileID: 0}
+  spriteManager: {fileID: 0}
+--- !u!114 &-877643562712888936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660855785089617105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7ace45a9dd157448829284dac53305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
+  spriteRenderer: {fileID: 3281225870863851823}
+  Alive: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  Hurt: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  Dead: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
 --- !u!1001 &2163386053517879590
 PrefabInstance:
   m_ObjectHideFlags: 0

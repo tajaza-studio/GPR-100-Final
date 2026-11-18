@@ -119,6 +119,7 @@ MonoBehaviour:
   buffed: 0
   debuffed: 0
   priestBonkSound: {fileID: 0}
+  spriteManager: {fileID: 0}
 --- !u!114 &-3693050604724092068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7ace45a9dd157448829284dac53305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  PriestAlive: {fileID: 21300000, guid: a525573d25dae0749ae7e9207189656b, type: 3}
-  PriestHurt: {fileID: 21300000, guid: 9464ce3f56737e44f902e925c3d66710, type: 3}
-  PriestDead: {fileID: 21300000, guid: 963f33a83bf67d2478809730b169aac1, type: 3}
+  spriteRenderer: {fileID: 4410258313234520130}
+  Alive: {fileID: 21300000, guid: a525573d25dae0749ae7e9207189656b, type: 3}
+  Hurt: {fileID: 21300000, guid: 9464ce3f56737e44f902e925c3d66710, type: 3}
+  Dead: {fileID: 21300000, guid: 963f33a83bf67d2478809730b169aac1, type: 3}
 --- !u!82 &-2866708533178035712
 AudioSource:
   m_ObjectHideFlags: 0

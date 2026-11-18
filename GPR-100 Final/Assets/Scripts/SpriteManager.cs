@@ -4,28 +4,29 @@ using System.Collections.Generic;
 
 public class SpriteManager : MonoBehaviour
 {
-    SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
-    public Sprite PriestAlive, PriestHurt, PriestDead;
+    public Sprite Alive, Hurt, Dead;
 
     private void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    public void ChangePriestSprite(int currentHealth, int maxHealth)
+    public void ChangeSprite(int currentHealth, int maxHealth)
     {
-        if(currentHealth >= (maxHealth / 2))
+        if (currentHealth >= (maxHealth / 2))
         {
-            spriteRenderer.sprite = PriestAlive;
+            spriteRenderer.sprite = Alive;
         }
         else if (currentHealth > 0)
         {
-            spriteRenderer.sprite = PriestHurt;
+            spriteRenderer.sprite = Hurt;
         }
         else
         {
-            spriteRenderer.sprite = PriestDead;
+            spriteRenderer.sprite = Dead;
         }
     }
+
 }

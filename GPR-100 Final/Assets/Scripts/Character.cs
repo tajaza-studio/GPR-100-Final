@@ -37,17 +37,16 @@ public class Character : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         }
 
-        spriteManager = GameObject.FindFirstObjectByType<SpriteManager>();
+        spriteManager = GetComponent<SpriteManager>();
     }
 
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
         healthBarScript.UpdateHealth(currentHealth);
-        if (gameObject.name == "Priest")
-        {
-            spriteManager.ChangePriestSprite(currentHealth, maxHealth);
-        }
+
+        spriteManager.ChangeSprite(currentHealth, maxHealth);
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -68,10 +67,9 @@ public class Character : MonoBehaviour
             currentHealth = maxHealth;
         }
         healthBarScript.UpdateHealth(currentHealth);
-        if (gameObject.name == "Priest")
-        {
-            spriteManager.ChangePriestSprite(currentHealth, maxHealth);
-        }
+
+        spriteManager.ChangeSprite(currentHealth, maxHealth);
+
         return heal;
     }
 

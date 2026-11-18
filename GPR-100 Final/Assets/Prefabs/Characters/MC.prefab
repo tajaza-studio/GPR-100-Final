@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6465910879404761809}
   - component: {fileID: 2838518614517069058}
   - component: {fileID: 1088970617763279257}
+  - component: {fileID: 466661534713553648}
   m_Layer: 0
   m_Name: MC
   m_TagString: Untagged
@@ -81,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.20188677, g: 0.28375158, b: 1, a: 1}
+  m_Sprite: {fileID: 6965217707261009828, guid: 7514b4c0d8d644a4b90af7438b02e179, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,6 +117,24 @@ MonoBehaviour:
   isAlive: 1
   buffed: 0
   debuffed: 0
+  priestBonkSound: {fileID: 0}
+  spriteManager: {fileID: 0}
+--- !u!114 &466661534713553648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542449355986364108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7ace45a9dd157448829284dac53305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
+  spriteRenderer: {fileID: 2838518614517069058}
+  Alive: {fileID: 6965217707261009828, guid: 7514b4c0d8d644a4b90af7438b02e179, type: 3}
+  Hurt: {fileID: -3792231412578707327, guid: 0bfa4990dfabbb74daf0351ea2385945, type: 3}
+  Dead: {fileID: 51228258461470455, guid: 976425c412fd9a240bf53ab32e536638, type: 3}
 --- !u!1001 &4976380613104998611
 PrefabInstance:
   m_ObjectHideFlags: 0
