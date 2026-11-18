@@ -333,6 +333,7 @@ MonoBehaviour:
   settingsButton: {fileID: 1977723200}
   creditsButton: {fileID: 7051169092770079994}
   quitButton: {fileID: 2284071343389911444}
+  playSound: {fileID: 3757443382897662265}
 --- !u!4 &544610139
 Transform:
   m_ObjectHideFlags: 0
@@ -1839,7 +1840,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: ffa473b8705664149bf95931143bf6c4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
