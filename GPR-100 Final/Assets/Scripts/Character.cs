@@ -52,6 +52,8 @@ public class Character : MonoBehaviour
         {
             currentHealth = 0;
             isAlive = false;
+            buffed = false;
+            debuffed = false;
             Instantiate(deathMarker, transform.position, Quaternion.identity);
             characterManager.EveryoneDeadCheck();
         }
