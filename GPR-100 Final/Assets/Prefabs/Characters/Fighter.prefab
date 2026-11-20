@@ -115,7 +115,7 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 20
   isAlive: 1
-  buffed: 1
+  buffed: 0
   debuffed: 0
   priestBonkSound: {fileID: 0}
   spriteManager: {fileID: 0}
