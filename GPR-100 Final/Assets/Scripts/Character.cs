@@ -9,8 +9,6 @@ public class Character : MonoBehaviour
 
     [SerializeField] GameObject healthBar;
 
-    [SerializeField] GameObject deathMarker;
-
     [SerializeField] GameObject buffMarker;
     HealthBar healthBarScript;
 
@@ -53,7 +51,6 @@ public class Character : MonoBehaviour
             isAlive = false;
             buffed = false;
             debuffed = false;
-            Instantiate(deathMarker, transform.position, Quaternion.identity);
             characterManager.EveryoneDeadCheck();
         }
     }
