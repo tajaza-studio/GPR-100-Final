@@ -113,6 +113,16 @@ What the build is missing: Art assets and successive fights. There are three fur
 
 Known bugs: N/A
 
+## Beta Release Notes
+
+Additions since Alpha: Title screen music; sound effects; new background color; sprites for two of three player characters; skill descriptions; four separate fights with unique enemy sprites; fighter's "lifesteal" skill.
+
+Removals since Alpha: X markers over dead player characters; fighter's "breathe" skill.
+
+Playtest fixes: Added help menu; added alternative keyboard inputs; menus no longer require mouse input; added buff/debuff indicators; changed turn indicator color.
+
+Known bugs: Chance for the skill selection pointer to remain visible during the enemy's turn; tutorial text not yet updated to match increased input range; selecting settings option causes a softlock.
+
 # Team Agreement
 
 ## Part 1: Meeting Times
