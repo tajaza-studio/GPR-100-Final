@@ -771,6 +771,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2969923802742329005, guid: 71c8444c51feb1049a24af2936be78ef, type: 3}
   m_PrefabInstance: {fileID: 6841973061025205062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1463629027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3971548422676843623, guid: cf73e51cf3af1094c901ce686a2ed253, type: 3}
+  m_PrefabInstance: {fileID: 1628035912}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1530750714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1587,7 @@ PrefabInstance:
     - target: {fileID: 3621567190825739001, guid: 469872945c8333140b0d8a23cb3a09f3, type: 3}
       propertyPath: turnIndicator
       value: 
-      objectReference: {fileID: 247206950}
+      objectReference: {fileID: 1463629027}
     - target: {fileID: 3621567190825739001, guid: 469872945c8333140b0d8a23cb3a09f3, type: 3}
       propertyPath: turnCountLabel
       value: 
