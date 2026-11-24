@@ -730,12 +730,13 @@ MonoBehaviour:
 
     In-Battle Controls:
 
-    WASD to move
-    selector
+    WASD or arrow
+    keys to move selector
 
-    SPACE to select
+    Space or Enter to select
 
-    C to cancel selection'
+    C or Backspace to cancel
+    selection'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
