@@ -82,8 +82,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.97735846, g: 0.30796006, b: 0.30796006, a: 1}
+  m_Sprite: {fileID: -54227618180665265, guid: 625b5bfd35fda99409638ab73e357557, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -108,7 +108,6 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   characterManager: {fileID: 0}
   healthBar: {fileID: 0}
-  deathMarker: {fileID: 0}
   buffMarker: {fileID: 5969382989630741134}
   damage: 5
   aoe: 0
@@ -132,9 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
   spriteRenderer: {fileID: 3281225870863851823}
-  Alive: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  Hurt: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  Dead: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  Alive: {fileID: -54227618180665265, guid: 625b5bfd35fda99409638ab73e357557, type: 3}
+  Hurt: {fileID: 2320976752632343835, guid: a3f2e61755a8dfd4abae67e14062b68f, type: 3}
+  Dead: {fileID: -6170477728206842137, guid: 701e8b5d75cfc4b41b418653f04d4774, type: 3}
 --- !u!1001 &2163386053517879590
 PrefabInstance:
   m_ObjectHideFlags: 0
